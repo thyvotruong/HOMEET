@@ -1,0 +1,725 @@
+/* =============================================
+   Homeet - Custom Styles (Optimized & Perfectly Aligned)
+   ============================================= */
+
+:root {
+    --color-bg: #fef8f4;
+    --color-navy: #182b3f;
+    --color-navy-hover: #243a52;
+    --color-experience-bg: #e9ddd4;
+    --color-text-muted: #74777d;
+    --color-text-body: #44474c;
+    --color-border: rgba(196, 198, 205, 0.3);
+    --color-border-light: #f3ede9;
+    --color-star: #4caf50;
+    --font-serif: "Noto Serif", Georgia, serif;
+    --font-sans: "Work Sans", system-ui, sans-serif;
+    --radius-card: 12px;
+    --radius-pill: 9999px;
+    --shadow-card: 0 4px 24px rgba(24, 43, 63, 0.06);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-serif);
+    background-color: var(--color-bg);
+    color: var(--color-navy);
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+/* ---- Header (Phương pháp Flex an toàn - Đảm bảo Logo KHÔNG biến mất) ---- */
+.site-header {
+    background-color: var(--color-bg);
+    border-bottom: 1px solid rgba(24, 43, 63, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.site-header .navbar {
+    padding: 0 1rem;               
+    height: 75px;             /* Chiều cao cố định chuẩn cho toàn bộ header */
+    display: flex;
+    align-items: center;      /* Luôn căn giữa logo và menu theo chiều dọc */
+    justify-content: space-between;
+}
+
+.site-header .navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-right: 2rem;
+    height: 100%;             /* Khóa chiều cao bằng với thanh điều hướng */
+}
+
+.site-logo {
+    height: 150px;             /* Tăng kích thước logo lớn và rõ nét */
+    max-height: 150px;         
+    width: auto;
+    object-fit: contain;      /* Giữ nguyên tỉ lệ ảnh gốc, không móp méo */
+    display: block !important;/* Cưỡng ép trình duyệt bắt buộc phải hiển thị */
+    
+    /* Mẹo tràn viền an toàn: Cho phép logo lớn hơn khung nhưng không làm phình menu */
+    margin-top: 10px;
+    margin-bottom: -10px;
+    transition: transform 0.2s ease;
+}
+
+/* Hiệu ứng zoom nhẹ tinh tế khi hover vào logo */
+.site-header .navbar-brand:hover .site-logo {
+    transform: scale(1.03);
+}
+
+.site-header .navbar-nav {
+    display: flex;
+    align-items: center;      
+    gap: 0.5rem;
+}
+
+.site-header .nav-link {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    color: var(--color-navy);
+    padding: 0.5rem 0;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.site-header .nav-link.active,
+.site-header .nav-link:hover {
+    color: var(--color-navy);
+}
+
+/* Căn chỉnh lại đường line dưới chữ khi active để không bị dính vào chữ */
+.site-header .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -12px;           
+    height: 2px;
+    background-color: var(--color-navy);
+}
+
+.navbar-toggler {
+    border-color: var(--color-navy);
+}
+
+.navbar-toggler-icon {
+    filter: invert(14%) sepia(20%) saturate(1200%) hue-rotate(170deg);
+}
+
+.btn-login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--color-navy);
+    color: #fffdfb;
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(120, 120, 120, 0.2);
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.btn-login:hover {
+    background-color: var(--color-navy-hover);
+    color: #fffdfb;
+}
+
+/* ---- Hero ---- */
+.hero-section {
+    position: relative;
+    margin-bottom: 3.5rem; 
+}
+
+.hero-image {
+    width: 100%;
+    height: clamp(350px, 45vw, 500px);
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+.hero-search-wrapper {
+    position: relative;
+    margin-top: -9.5rem; 
+    z-index: 10;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.search-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; 
+    background: #fff;
+    border: 1px solid #e0f2fe;
+    border-radius: var(--radius-pill);
+    padding: 0.4rem 0.6rem;
+    box-shadow: var(--shadow-card);
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.search-field {
+    flex: 1 1 180px;
+    padding: 0.4rem 1.2rem;
+    border-right: 1px solid var(--color-border-light);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.search-field:last-of-type {
+    border-right: none;
+}
+
+.search-field label {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    margin: 0;
+}
+
+.search-field input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+    padding: 0;
+    width: 100%;
+}
+
+.search-field input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.search-submit {
+    flex-shrink: 0;
+    align-self: center;
+    width: 44px;
+    height: 44px;
+    margin: 0.2rem;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-navy);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-submit:hover {
+    background-color: var(--color-navy-hover);
+}
+
+
+/* ---- Section shared ---- */
+.section-title {
+    font-family: var(--font-serif); /* Giữ nguyên font chữ serif của bạn[cite: 2] */
+    font-weight: 600; /*[cite: 2] */
+    font-size: clamp(1.5rem, 3vw, 2.25rem); /*[cite: 2] */
+    line-height: 1.2; /*[cite: 2] */
+    text-transform: uppercase; /*[cite: 2] */
+    color: var(--color-navy); /*[cite: 2] */
+    margin-bottom: 0.75rem;
+    
+    /* SỬA / THÊM CHỖ NÀY ĐỂ RA GIỮA */
+    text-align: center;      /* Căn giữa chữ tiêu đề chính */
+}
+
+.section-subtitle {
+    font-family: var(--font-serif); /*[cite: 2] */
+    font-size: clamp(0.9rem, 1.5vw, 1.15rem); /*[cite: 2] */
+    color: var(--color-text-muted); /*[cite: 2] */
+    line-height: 1.6;        /* Giúp khoảng cách các dòng chữ thưa và dễ đọc hơn */
+    
+    /* SỬA / THÊM CHỖ NÀY ĐỂ CHỮ CHẠY ĐỀU VÀ CÂN GIỮA */
+    max-width: 100%;  
+    width: fit-content;      /* Tăng nhẹ độ rộng tối đa để chữ dàn đều trải rộng hơn một chút */
+    margin: 0 auto 2.5rem auto; /* `0 auto` và `auto` giúp khối chữ tự động nhảy ra chính giữa trang, `2.5rem` tạo khoảng cách đẹp với các ô phòng bên dưới */
+    text-align: center;      /* Căn giữa dòng mô tả ngắn */
+}
+
+/* ---- Accommodation (Đồng bộ chiều cao khung hình tuyệt đối) ---- */
+/* ---- Accommodation (Set Size Hoàn Chỉnh - Chuẩn Tỷ Lệ) ---- */
+.section-accommodation {
+    padding-top: 1.5rem;
+}
+
+.room-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;                /* Khoảng cách cố định giữa ảnh và phần chữ */
+    height: 100%; 
+    max-width: 580px;         /* Khóa chiều rộng card cố định lý tưởng */
+    margin: 0 auto;           
+}
+
+.room-card-image {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16 / 10;    /* Tỷ lệ vàng giúp ảnh có độ cao vừa vặn */
+}
+
+.room-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.room-card:hover .room-card-image img {
+    transform: scale(1.04);
+}
+
+.room-card-body {
+    display: flex;
+    align-items: center;      /* Căn giữa nút bấm và cụm chữ theo trục dọc */
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: auto; 
+    padding: 4px 4px 0 4px;   /* Tạo khoảng thở nhẹ xung quanh nội dung chữ */
+}
+
+.room-info {
+    flex: 1;
+}
+
+.room-name {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.75rem;       /* KHÓA SIZE: Chữ to rõ ràng, đậm nét sang trọng */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;       /* Khoảng cách cố định xuống dòng giá */
+    line-height: 1.3;
+    color: var(--color-navy);
+}
+
+.room-price {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 1.45rem;       /* KHÓA SIZE: Kích thước chữ giá tiền dễ đọc */
+    color: var(--color-text-muted);
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.btn-detail {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.45rem;        /* KHÓA SIZE: Cỡ chữ nút bấm tiêu chuẩn */
+    color: #fff;
+    background-color: var(--color-navy);
+    border-radius: 6px;
+    
+    /* KHÓA SIZE NÚT: Tạo khối nút bấm đầy đặn, chắc chắn */
+    padding: 10px 22px;       
+    min-width: 110px;         
+    
+    text-align: center;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.btn-detail:hover {
+    background-color: var(--color-navy-hover);
+    color: #fff;
+}
+
+/* ---- Experience (Đồng bộ khối đặc điểm) ---- */
+.section-experience {
+    background-color: var(--color-experience-bg);
+}
+
+.feature-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.feature-card h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-navy);
+}
+
+.feature-card p {
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-body);
+    margin: 0;
+}
+
+/* ---- Reviews (Cố định khung ảnh feedback) ---- */
+.review-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: var(--shadow-card);
+    height: 100%; 
+}
+
+.review-photo {
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    height: 140px; /* Cố định chiều cao khung ảnh review để các card bằng nhau */
+}
+
+.review-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.review-text {
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-navy);
+    margin: 0;
+    flex-grow: 1; /* Tự co giãn để phần Author bên dưới luôn thẳng hàng ngang */
+}
+
+.review-stars {
+    display: flex;
+    gap: 0.25rem;
+    color: var(--color-star);
+    font-size: 0.9rem;
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.review-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #e7e1dd;
+    flex-shrink: 0;
+}
+
+.review-name {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    color: var(--color-navy);
+}
+
+/* ---- Footer ---- */
+.site-footer {
+    background-color: var(--color-navy);
+    color: #fff;
+    border-top: 1px solid #c4c6cd;
+}
+
+.footer-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.site-footer .col-lg-3:first-child .footer-title {
+    font-size: 1.4rem;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.footer-text {
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    color: #cbd5e1;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    padding-left: 4px;
+}
+
+.footer-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.footer-icons img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+}
+/* ---- Thêm mới hoàn toàn để định dạng riêng cho cụm Social ---- */
+.footer-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;        /* Khoảng cách giữa các ô mạng xã hội */
+}
+
+/* Định dạng riêng cho ô vuông chứa Bootstrap Icons */
+.footer-socials .social-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;      /* Bằng size với ô thanh toán cho cân đối */
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05); /* Lớp nền tối nhẹ */
+    border-radius: 8px; /* Bo góc mềm mại theo ảnh mẫu */
+    color: #ffffff;   /* Màu trắng cho icon */
+    font-size: 20px;  /* Cỡ icon to rõ ràng */
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng Hover chuyển nền trắng sang xịn mịn */
+.footer-socials .social-icon-btn:hover {
+    background-color: #ffffff;
+    color: var(--color-navy); /* Đổi icon sang màu xanh navy của bạn */
+    transform: translateY(-3px); /* Nhấc nhẹ lên khi hover */
+}
+
+/* ==========================================================================
+   BỔ SUNG KHỐI LIÊN HỆ, BỘ CÔNG THƯƠNG & BẢN QUYỀN CHO FOOTER
+   ========================================================================== */
+
+/* 1. Định dạng Khối Liên hệ */
+.footer-contact-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.footer-contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-serif); /*[cite: 2] */
+    font-size: 0.875rem; /*[cite: 2] */
+    line-height: 1.6; /*[cite: 2] */
+    color: #e0e0e0; /*[cite: 2] */
+}
+
+.footer-contact-list li i {
+    color: #cbd5e1; /* Màu icon trắng mờ đồng bộ style */[cite: 2]
+    font-size: 1rem;
+    margin-top: 2px;
+}
+
+.footer-contact-list li strong {
+    color: #ffffff; /* Làm nổi bật số điện thoại hotline */
+}
+
+/* 2. Định dạng Logo Bộ Công Thương */
+.bct-logo {
+    height: 45px; /* Chiều cao cân xứng tuyệt đối với các ô icon mạng xã hội */
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    transition: opacity 0.2s ease;
+}
+
+.bct-logo:hover {
+    opacity: 0.9;
+}
+
+.bct-wrapper {
+    width: 100%;
+    display: block;
+    margin-top: 20px; 
+}
+
+/* 3. Định dạng Dòng Bản Quyền */
+.footer-bottom {
+    margin-top: 2.5rem;             /* Khoảng thở giữa các cột thông tin bên trên và dòng đáy */
+    padding-top: 1.5rem;            /* Khoảng thở từ đường kẻ xuống chữ */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Đường line ngang mờ sang trọng phân cách */
+    text-align: center;             /* Căn chữ ra chính giữa */
+}
+
+.copyright-text {
+    font-family: var(--font-serif); /* Đảm bảo đồng bộ font serif */[cite: 2]
+    font-size: 0.85rem;             /* Cỡ chữ bản quyền nhỏ gọn chuẩn responsive */
+    color: #cbd5e1;                 /* Màu chữ trắng xám dịu mắt, không bị chói */[cite: 2]
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+
+
+/* ---- Responsive ---- */
+@media (max-width: 991.98px) {
+    .site-header .navbar {
+        height: auto;             
+        padding: 0.75rem 1rem;
+    }
+
+    .site-header .navbar-brand {
+        height: auto;             
+    }
+
+    .site-logo {
+        height: 48px;             /* Thu nhỏ logo vừa vặn trên điện thoại */
+        max-height: 48px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .site-header .navbar-nav {
+        align-items: flex-start;  
+        padding-top: 1rem;
+        width: 100%;
+    }
+
+    .btn-login {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .hero-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-search-wrapper {
+        margin-top: -1.5rem;
+    }
+
+    .search-bar {
+        align-items: stretch;
+        border-radius: var(--radius-card);
+    }
+
+    .search-field {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border-light);
+        padding: 0.65rem 1rem;
+    }
+
+    .search-field:last-of-type {
+        border-bottom: none;
+    }
+
+    .search-submit {
+        width: 100%;
+        height: 44px;
+        border-radius: var(--radius-pill);
+        margin: 0.5rem 0 0;
+    }
+
+    .room-card-body {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .btn-detail {
+        width: 100%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .site-logo {
+        height: 42px;             
+        max-height: 42px;
+    }
+
+    .hero-image {
+        height: 240px;
+    }
+
+    .hero-search-wrapper {
+        margin-top: -1.25rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .review-photo {
+        height: 160px;
+    }
+}
