@@ -22,7 +22,7 @@
 
     <main class="payment-page-wrapper py-5">
         <div class="container">
-            <!-- Vùng hiển thị thông báo cảnh báo sức chứa -->
+            <!-- Vùng hiển thị thông báo cảnh báo sức chứa hoặc trùng lịch -->
             <div id="capacity-alert-container"></div>
 
             <div class="row g-4">
@@ -227,13 +227,29 @@
             let currentPricePerNight = parseInt(priceParam) || 2390000;
             let finalCalculatedNumericPrice = 0; // Biến lưu tổng tiền dạng SỐ để bắn API
 
+            // Biến lưu giữ ngày hợp lệ gần nhất nhằm khôi phục khi người dùng chọn ngày bị trùng lịch
+            let lastValidCheckIn = "";
+            let lastValidCheckOut = "";
+
             // Đồng bộ ngày và số khách từ giỏ hàng hoặc thiết lập mặc định trước đó
             const prefCheckIn = sessionStorage.getItem('preferred_checkin');
             const prefCheckOut = sessionStorage.getItem('preferred_checkout');
             const prefGuests = sessionStorage.getItem('preferred_guests');
 
-            if (prefCheckIn) document.getElementById('checkin-date').value = prefCheckIn;
-            if (prefCheckOut) document.getElementById('checkout-date').value = prefCheckOut;
+            if (prefCheckIn) {
+                document.getElementById('checkin-date').value = prefCheckIn;
+                lastValidCheckIn = prefCheckIn;
+            } else {
+                lastValidCheckIn = document.getElementById('checkin-date').value;
+            }
+            
+            if (prefCheckOut) {
+                document.getElementById('checkout-date').value = prefCheckOut;
+                lastValidCheckOut = prefCheckOut;
+            } else {
+                lastValidCheckOut = document.getElementById('checkout-date').value;
+            }
+            
             if (prefGuests) document.getElementById('total-guests').value = prefGuests;
 
             if (roomsDataset[activeRoomId]) {
@@ -248,6 +264,58 @@
                 
                 document.getElementById('room-display-tag').textContent = target.tag;
                 if(!priceParam) currentPricePerNight = target.price;
+            }
+
+            // HÀM TIỆN ÍCH CHUYỂN ĐỔI NGÀY SANG DATE OBJECT ĐỂ SO SÁNH
+            function parseDateString(dateStr) {
+                if (!dateStr) return null;
+                if (dateStr.includes('/')) {
+                    const parts = dateStr.split('/');
+                    if (parts.length === 3) {
+                        return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+                    }
+                }
+                return new Date(dateStr);
+            }
+
+            // HÀM KIỂM TRA TRÙNG LỊCH TRỰC TIẾP TRÊN TRANG THANH TOÁN
+            function isRoomJammed(roomId, checkInInput, checkOutInput) {
+                let bookingHistory = [];
+                try {
+                    const raw = localStorage.getItem('bookingHistory');
+                    if (raw) bookingHistory = JSON.parse(raw);
+                } catch (e) {
+                    bookingHistory = [];
+                }
+
+                const userIn = new Date(checkInInput).getTime();
+                const userOut = new Date(checkOutInput).getTime();
+
+                const idMapping = {
+                    "1": "nghinh-phong", "2": "hoa-vang", "3": "vung-ro", "4": "mui-dien",
+                    "nghinh-phong": "nghinh-phong", "hoa-vang": "hoa-vang", "vung-ro": "vung-ro", "mui-dien": "mui-dien"
+                };
+
+                const normUserRoom = idMapping[roomId] || roomId;
+
+                for (let order of bookingHistory) {
+                    const normOrderRoom = idMapping[order.roomKey] || order.roomKey;
+                    
+                    if (normUserRoom === normOrderRoom && order.status !== 'cancelled') {
+                        const orderInDate = parseDateString(order.checkIn);
+                        const orderOutDate = parseDateString(order.checkOut);
+
+                        if (orderInDate && orderOutDate) {
+                            const orderIn = orderInDate.getTime();
+                            const orderOut = orderOutDate.getTime();
+
+                            if (userIn < orderOut && userOut > orderIn) {
+                                return true; // Trùng lịch!
+                            }
+                        }
+                    }
+                }
+                return false;
             }
 
             // HÀM KIỂM TRA SỨC CHỨA VÀ HIỂN THỊ CẢNH BÁO
@@ -284,12 +352,33 @@
                 
                 document.getElementById('summary-guests').textContent = guests;
 
-                // Thực hiện kiểm tra sức chứa ngay khi thay đổi số khách
+                // 1. Thực hiện kiểm tra sức chứa ngay khi thay đổi số khách
                 checkRoomCapacity(guests);
 
-                if(checkinStr && checkoutStr) {
+                if (checkinStr && checkoutStr) {
                     const d1 = new Date(checkinStr);
                     const d2 = new Date(checkoutStr);
+
+                    // Ngăn chặn chọn ngày trả phòng trước ngày nhận phòng
+                    if (d1 >= d2) {
+                        alert("Ngày trả phòng phải sau ngày nhận phòng!");
+                        document.getElementById('checkin-date').value = lastValidCheckIn;
+                        document.getElementById('checkout-date').value = lastValidCheckOut;
+                        return;
+                    }
+
+                    // 2. Thực hiện kiểm tra trùng lịch đặt phòng trực tiếp
+                    if (isRoomJammed(activeRoomId, checkinStr, checkoutStr)) {
+                        alert("Rất tiếc! Phòng này đã được đặt trong khoảng thời gian vừa chọn. Hệ thống sẽ khôi phục lại lịch đặt trước đó của bạn.");
+                        document.getElementById('checkin-date').value = lastValidCheckIn;
+                        document.getElementById('checkout-date').value = lastValidCheckOut;
+                        return;
+                    }
+
+                    // Lưu trữ lại ngày hợp lệ vừa đổi thành công
+                    lastValidCheckIn = checkinStr;
+                    lastValidCheckOut = checkoutStr;
+
                     const timeDiff = d2.getTime() - d1.getTime();
                     let nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
                     if (nights <= 0) nights = 1;
@@ -330,6 +419,15 @@
 
             // Sự kiện Nhấp nút "Xác nhận đặt phòng & Thanh toán" -> Hiển thị khung QR
             document.getElementById('btn-submit-payment').addEventListener('click', function() {
+                const checkInVal = document.getElementById('checkin-date').value;
+                const checkOutVal = document.getElementById('checkout-date').value;
+
+                // Kiểm tra lại lần cuối trước khi chuyển sang khung QR Code để đề phòng
+                if (isRoomJammed(activeRoomId, checkInVal, checkOutVal)) {
+                    alert("Khoảng thời gian này phòng đã bị trùng lịch đặt chỗ. Vui lòng đổi ngày đi khác!");
+                    return;
+                }
+
                 document.getElementById('form-booking-section').classList.add('d-none');
                 document.getElementById('inline-invoice-section').classList.remove('d-none');
             });
