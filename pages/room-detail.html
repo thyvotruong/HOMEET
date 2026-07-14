@@ -17,7 +17,7 @@
 </head>
 <body>
 
-    <!-- Navigation (Được tải động thông qua file header.html) -->
+    <!-- Navigation (Được thông qua file header.html) -->
     <header class="site-header sticky-top" data-include="header.html"></header>
 
     <main class="room-detail-page">
@@ -76,7 +76,7 @@
         <!-- SECTION THÔNG TIN PHÒNG & ĐẶT PHÒNG -->
         <section class="container my-5">
             <div class="row text-start text-dark">
-                <!-- CỘT BÊN TRÁI (8/12): THÔNG TIN PHÒNG -->
+                <!-- CỘT BÊN TRÁI: THÔNG TIN PHÒNG -->
                 <div class="col-lg-8">
                     <h2 class="fw-bold mb-3" id="room-body-title">Phòng...</h2>
                     <p class="text-muted fs-5" id="room-desc">Đang cập nhật mô tả không gian từ máy chủ...</p>
@@ -117,7 +117,7 @@
                     </ul>
                 </div>
 
-                <!-- CỘT BÊN PHẢI (4/12): BOX ĐẶT PHÒNG NHANH -->
+                <!-- CỘT BÊN PHẢI: BOX ĐẶT PHÒNG NHANH -->
                 <div class="col-lg-4 mt-4 mt-lg-0">
                     <div class="card shadow-sm p-4 sticky-top" style="top: 20px; z-index: 10;">
                         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -128,7 +128,7 @@
                             <span class="badge bg-success px-3 py-2">Còn phòng</span>
                         </div>
 
-                        <!-- CHỨC NĂNG MỚI: BỘ CHỌN NGÀY ĐẶT PHÒNG -->
+                        <!-- CHỨC NĂNG: CHỌN NGÀY ĐẶT PHÒNG -->
                         <div class="booking-dates-picker mb-3">
                             <div class="row g-2">
                                 <div class="col-6">
@@ -157,7 +157,7 @@
         </section>
     </main>
 
-    <!-- Lightbox Modal xem ảnh kiểu Facebook -->
+    <!-- Lightbox Modal xem ảnh chi tiết-->
     <div class="modal fade gallery-lightbox-modal" id="lightboxModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content bg-dark border-0">
@@ -200,9 +200,9 @@
     <script src="../js/load-layout.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- HÀM TIỆN ÍCH KIỂM TRA ĐĂNG NHẬP CHUẨN SỬA ĐỔI -->
+    <!-- HÀM KIỂM TRA ĐĂNG NHẬP -->
     <script>
-        // --- HÀM KIỂM TRA ĐĂNG NHẬP ĐÃ SỬA ĐỒNG BỘ CHUẨN ---
+        // --- HÀM KIỂM TRA ĐĂNG NHẬP ---
         function checkAuth() {
             // Kiểm tra chính xác key 'isLoggedIn' đồng bộ với file load-layout.js
             const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -215,7 +215,7 @@
         }
     </script>
 
-    <!-- SCRIPT XỬ LÝ YÊU THÍCH LOCALSTORAGE (ĐÃ ĐỒNG BỘ ĐỊNH DẠNG CHUỖI CHỮ CHO PROFILE) -->
+    <!-- SCRIPT XỬ LÝ YÊU THÍCH LOCALSTORAGE (ĐỒNG BỘ ĐỊNH DẠNG CHUỖI CHỮ CHO PROFILE) -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const wishlistBtn = document.querySelector('.room-wishlist');
@@ -263,7 +263,7 @@
         });
     </script>
 
-    <!-- CHỨC NĂNG MỚI: THIẾT LẬP NGÀY MẶC ĐỊNH VÀ HÀM CHECK TRÙNG LỊCH -->
+    <!-- CHỨC NĂNG: THIẾT LẬP NGÀY MẶC ĐỊNH VÀ HÀM CHECK TRÙNG LỊCH -->
     <script>
         function parseDateString(dateStr) {
             if (!dateStr) return null;

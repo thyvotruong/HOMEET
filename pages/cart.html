@@ -68,11 +68,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+       
         const roomsDB = {
+            // Key chữ thường dùng ở trang chi tiết
             "nghinh-phong": { title: "Nghinh Phong", priceRaw: 990000, imgShort: "rooms/nghinh-phong-main.jpg" },
             "hoa-vang": { title: "Hoa Vàng", priceRaw: 1590000, imgShort: "room-hoa-vang.jpg" },
             "vung-ro": { title: "Vũng Rô", priceRaw: 2390000, imgShort: "rooms/vungro-main.jpg" },
-            "mui-dien": { title: "Mũi Điện", priceRaw: 2390000, imgShort: "room-mui-dien.jpg" }
+            "mui-dien": { title: "Mũi Điện", priceRaw: 2390000, imgShort: "room-mui-dien.jpg" },
+
+            // THÊM: Key dạng số ID để đồng bộ với nút "Thêm vào giỏ hàng" từ room-detail.html
+            "1": { title: "Nghinh Phong", priceRaw: 990000, imgShort: "rooms/nghinh-phong-main.jpg" },
+            "2": { title: "Hoa Vàng", priceRaw: 1590000, imgShort: "room-hoa-vang.jpg" },
+            "3": { title: "Vũng Rô", priceRaw: 2390000, imgShort: "rooms/vungro-main.jpg" },
+            "4": { title: "Mũi Điện", priceRaw: 2390000, imgShort: "room-mui-dien.jpg" }
         };
 
         function renderCart() {
