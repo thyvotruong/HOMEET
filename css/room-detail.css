@@ -1,0 +1,306 @@
+/* =============================================
+   Homeet - Room Detail Page
+   ============================================= */
+/* Màu viền tùy chỉnh cho nút Giỏ hàng */
+.btn-custom-outline-navy {
+    border-color: #182B3F !important;
+    color: #182B3F !important; /* Màu của icon giỏ hàng mặc định */
+    background-color: transparent !important;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi di chuột vào (Hover): Nền hóa xanh, chữ/icon hóa trắng giống Bootstrap gốc */
+.btn-custom-outline-navy:hover {
+    background-color: #182B3F !important;
+    color: #ffffff !important;
+    border-color: #182B3F !important;
+}
+/* Màu nền tùy chỉnh cho nút Đặt phòng ngay */
+.btn-custom-navy {
+    background-color: #182B3F !important;
+    border-color: #182B3F !important;
+    color: #ffffff !important; /* Đảm bảo chữ luôn hiển thị màu trắng rõ nét */
+    transition: all 0.3s ease; /* Tạo hiệu ứng mượt mà khi di chuột */
+}
+
+/* Hiệu ứng đổi màu nhẹ khi người dùng di chuột (Hover) vào nút */
+.btn-custom-navy:hover {
+    background-color: #243f5c !important; /* Màu xanh sáng hơn một chút khi hover */
+    border-color: #243f5c !important;
+    color: #ffffff !important;
+}
+.room-detail-page {
+    padding-bottom: 3rem;
+}
+
+/* ---- Room header ---- */
+.room-header {
+    padding: 1.25rem 0 0.5rem;
+}
+
+.room-detail-title {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-navy);
+    margin-bottom: 0.5rem;
+}
+
+.room-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.room-meta-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.room-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.room-rating .bi-star-fill {
+    color: var(--color-navy);
+    font-size: 1rem;
+}
+
+.room-rating-score {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.7px;
+    color: var(--color-navy);
+}
+
+.room-rating-count {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.7px;
+    color: var(--color-text-body);
+}
+
+.room-meta-dot {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-text-body);
+}
+
+.room-location {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.7px;
+    color: var(--color-navy);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.room-location:hover {
+    color: var(--color-navy-hover);
+}
+
+.room-wishlist {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.7px;
+    color: var(--color-navy);
+    text-decoration: underline;
+    text-decoration-color: var(--color-text-muted);
+    text-underline-offset: 3px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.room-wishlist:hover {
+    color: var(--color-navy-hover);
+}
+
+.room-wishlist .bi-heart {
+    font-size: 1.125rem;
+    text-decoration: none;
+}
+
+.room-wishlist.active {
+    color: #dc3545;
+    text-decoration-color: #dc3545;
+}
+
+.room-wishlist.active .bi-heart-fill {
+    color: #dc3545;
+    fill: #dc3545;
+}
+
+.room-wishlist.active:hover {
+    color: #bd2130; 
+}
+
+/* ---- Gallery ---- */
+.room-gallery {
+    padding: 1rem 0 2rem;
+}
+
+.room-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    height: clamp(280px, 36vw, 520px);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item {
+    margin: 0;
+    background-color: var(--color-border-light);
+    overflow: hidden;
+    min-height: 0;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-item-main {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+}
+
+.gallery-show-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    z-index: 2;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-navy);
+    border-radius: 8px;
+    background-color: var(--color-bg);
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.7px;
+    color: #1d1b19;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.gallery-show-all:hover {
+    background-color: var(--color-navy);
+    color: #fff;
+}
+
+.gallery-show-all .bi-grid-3x3-gap {
+    font-size: 1.125rem;
+}
+
+/* ---- Responsive Room Detail ---- */
+@media (max-width: 991.98px) {
+    .room-header {
+        padding-top: 1rem;
+    }
+
+    .room-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .room-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        height: auto;
+    }
+
+    .gallery-item-main {
+        grid-column: 1 / span 2;
+        grid-row: auto;
+        aspect-ratio: 16 / 10;
+    }
+
+    .gallery-item:not(.gallery-item-main) {
+        aspect-ratio: 4 / 3;
+    }
+
+    .gallery-show-all {
+        right: 16px;
+        bottom: 16px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .room-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .gallery-item-main {
+        grid-column: 1;
+        aspect-ratio: 16 / 10;
+    }
+
+    .gallery-item:not(.gallery-item-main) {
+        display: none;
+    }
+
+    .gallery-show-all {
+        right: 12px;
+        bottom: 12px;
+        font-size: 0.875rem;
+        padding: 0.4rem 0.75rem;
+    }
+}
+
+/* ---- Lightbox Modal ---- */
+.gallery-lightbox-modal .modal-content {
+    background-color: rgba(0, 0, 0, 0.95) !important;
+}
+
+.gallery-lightbox-img {
+    max-height: 85vh;
+    object-fit: contain;
+    background-color: #000;
+}
+
+.gallery-lightbox-modal .carousel-control-prev,
+.gallery-lightbox-modal .carousel-control-next {
+    width: 8%;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.gallery-lightbox-modal .carousel-control-prev:hover,
+.gallery-lightbox-modal .carousel-control-next:hover {
+    opacity: 1;
+}
+
+.gallery-lightbox-modal .carousel-control-prev-icon,
+.gallery-lightbox-modal .carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    background-size: 50%;
+}

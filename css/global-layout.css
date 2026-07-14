@@ -1,0 +1,31 @@
+/* ---- Định dạng các cột Footer chung ---- */
+.footer-column-about {
+    flex: 1 1 280px;
+    max-width: 320px;
+}
+
+.footer-column-contact {
+    flex: 1 1 240px;
+    max-width: 280px;
+}
+
+.footer-column-support {
+    flex: 1 1 200px;
+    max-width: 240px;
+}
+
+.footer-column-connect {
+    flex: 1 1 240px;
+    max-width: 260px;
+}
+
+/* ---- Responsive Footer toàn trang ---- */
+@media (max-width: 991.98px) {
+    .footer-column-about,
+    .footer-column-contact,
+    .footer-column-support,
+    .footer-column-connect {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,234 @@
+/* ==========================================================================
+   CẤU TRÚC PHÔNG NỀN ĐỒNG BỘ HỆ THỐNG HOMEET
+   ========================================================================== */
+body {
+    font-family: 'Noto Serif', serif;
+    background-color: #F9F9F7; /* Màu nền kem nhạt ấm áp */
+    color: #182B3F;
+}
+
+/* --- Khối hộp tổng quát bên trái --- */
+.payment-card-block {
+    background-color: #ffffff;
+    border: 1px solid #EAECEF;
+    border-radius: 12px;
+}
+
+.block-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #182B3F;
+}
+
+/* --- Tinh chỉnh Form và các ô Input --- */
+.form-label-custom {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4A5568;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.form-control-custom {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #DCE1E6;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #182B3F;
+    outline: none;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease;
+}
+
+.form-control-custom:focus {
+    border-color: #182B3F;
+}
+
+.bg-light-email {
+    background-color: #EEF2F6;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+    pointer-events: none;
+}
+
+.badge-secure {
+    background-color: #E6F4EA;
+    color: #137333;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+/* ==========================================================================
+   XỬ LÝ TABS PHƯƠNG THỨC THANH TOÁN (4 PHƯƠNG THỨC)
+   ========================================================================== */
+.method-tab-item {
+    border: 1px solid #DCE1E6;
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #4A5568;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.method-tab-item:hover {
+    background-color: #F8F9FA;
+    border-color: #BCC4CC;
+}
+
+.method-tab-item.active {
+    border-color: #182B3F;
+    background-color: #F0F4F8;
+    color: #182B3F;
+    font-weight: 600;
+    box-shadow: 0 0 0 1px #182B3F;
+}
+
+/* Hộp bao quanh khu vực hiển thị ảnh QR */
+.qr-container-box {
+    background-color: #FAFAFA;
+}
+
+/* Tối ưu hóa kích thước hiển thị của hình ảnh mã QR */
+.payment-qr-image {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    border: 1px solid #EAECEF;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: #ffffff;
+}
+
+.btn-submit-booking {
+    background-color: #182B3F;
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-submit-booking:hover {
+    background-color: #0f1d2b;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   CỘT PHẢI: STICKY SIDEBAR (TÓM TẮT PHÒNG VŨNG RÔ)
+   ========================================================================== */
+.payment-sidebar-sticky {
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar-room-banner {
+    height: 220px;
+}
+
+.sidebar-room-banner img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.room-tag-overlay {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #182B3F;
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.room-display-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #182B3F;
+}
+
+.pricing-breakdown-list .text-muted,
+.pricing-breakdown-list .fw-semibold {
+    font-size: 0.95rem;
+}
+
+.link-support {
+    font-size: 0.85rem;
+}
+
+.link-support:hover {
+    color: #182B3F !important;
+}
+
+/* ==========================================================================
+   BỔ SUNG: KHỐI GIẢ LẬP THANH TOÁN (MODAL SIMULATION) CHO ĐỒ ÁN
+   ========================================================================== */
+.simulation-modal-content {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.simulation-alert-money {
+    background-color: #FFF5F5;
+    border: 1px dashed #FEB2B2;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #2D3748;
+}
+
+/* Định dạng cấu trúc vòng tròn chứa dấu tick thành công */
+.success-checkmark-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.success-icon-circle {
+    width: 72px;
+    height: 72px;
+    background-color: #E6F4EA;
+    color: #137333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    animation: scaleInCheck 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+/* Tạo hiệu ứng xuất hiện phóng to nảy nhẹ (scale) cho icon check */
+@keyframes scaleInCheck {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

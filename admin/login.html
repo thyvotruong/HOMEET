@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập hệ thống - Homeet Admin</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body class="login-bg">
+    <div class="card p-4 shadow-lg border-0" style="width: 400px; border-radius: 15px;">
+        <div class="card-body">
+            <h3 class="text-center fw-bold mb-2 text-dark">HOMEET</h3>
+            <p class="text-center text-muted small mb-4">Vui lòng đăng nhập tài khoản quản trị</p>
+            
+            <div id="login-alert" class="alert alert-danger d-none small p-2 text-center"></div>
+
+            <form id="login-form">
+                <div class="mb-3">
+                    <label class="form-label small fw-bold">Tài khoản Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="homeet999@999" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label small fw-bold">Mật khẩu</label>
+                    <input type="password" id="password" class="form-control" placeholder="••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">ĐĂNG NHẬP</button>
+            </form>
+        </div>
+    </div>
+    <script src="../js/backend-service.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

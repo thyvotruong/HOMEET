@@ -1,0 +1,203 @@
+/* =============================================
+   Homeet - FAQ / Help Center Page Style
+   ============================================= */
+
+:root {
+    --color-bg-system: #FEF8F4;      
+    --color-navy: #182B3F;           
+    --color-primary-brand: #2b4e64;  
+    --font-global: 'Noto Serif', serif;
+    --radius-box: 12px;
+}
+
+/* Thừa kế màu nền hệ thống mượt mà */
+.my-content-page {
+    background-color: var(--color-bg-system);
+    font-family: var(--font-global);
+    color: var(--color-navy);
+}
+
+/* ---- KHỐI TIÊU ĐỀ TRÊN CÙNG ---- */
+.faq-hero-section {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faq-main-title {
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem); 
+    color: var(--color-navy);
+}
+
+.faq-main-subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* ---- THANH TÌM KIẾM HERO ---- */
+.faq-hero-search {
+    max-width: 540px; 
+    width: 100%;
+}
+
+.faq-hero-search input {
+    font-family: var(--font-global);
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem 0.75rem 2.7rem !important; 
+    height: auto;
+}
+
+/* ---- TIÊU ĐỀ CÁC MỤC CHÍNH ---- */
+.faq-section-title {
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--color-navy);
+}
+
+/* ---- Ô TÌM KIẾM CON TRONG CỘT TRÁI ---- */
+.faq-sub-search input {
+    font-family: var(--font-global);
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+    padding: 0.6rem 1rem;
+}
+
+.faq-hero-search input:focus,
+.faq-sub-search input:focus {
+    box-shadow: 0 0 0 3px rgba(24, 43, 63, 0.1) !important;
+    border-color: var(--color-navy) !important;
+}
+
+/* ---- CUSTOM BOOTSTRAP ACCORDION ---- */
+.custom-accordion .accordion-item {
+    border: none !important;
+    background-color: #ffffff;
+    width: 100%; 
+}
+
+.custom-accordion .accordion-button {
+    font-family: var(--font-global);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-navy);
+    background-color: #ffffff;
+    padding: 1.1rem 1.25rem;
+    box-shadow: none !important;
+    border: none !important;
+    text-align: left;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+    color: var(--color-navy);
+    background-color: #f8fafc; 
+}
+
+.custom-accordion .accordion-body {
+    font-family: var(--font-global);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding: 1.1rem 1.25rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* ---- SIDEBAR CARDS ---- */
+.faq-sidebar-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-box);
+    width: 100%;
+}
+
+.sidebar-widget-title {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-navy);
+}
+
+.contact-meta-content {
+    flex: 1;
+    min-width: 0; 
+}
+
+.contact-icon-box {
+    width: 40px;
+    height: 40px;
+    background-color: #182B3F;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.text-muted-sm {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.contact-info-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    word-break: break-word; 
+}
+
+.contact-info-text.address-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+}
+
+/* MXH Style */
+.social-img-link img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.15s ease;
+}
+
+.social-img-link:hover img {
+    transform: scale(1.08);
+}
+
+.btn-messenger {
+    font-family: var(--font-global);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-messenger:hover {
+    background-color: #f8fafc;
+    color: var(--color-navy);
+}
+
+.btn-messenger i {
+    color: #0084FF;
+    font-size: 1rem;
+}
+
+/* Giữ Sidebar cố định khi cuộn màn hình máy tính */
+@media (min-width: 992px) {
+    .faq-sidebar-sticky {
+        position: sticky;
+        top: 100px; /* Tách một khoảng an toàn dưới sticky-header */
+    }
+}

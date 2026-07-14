@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cẩm nang du lịch Phú Yên - Homeet</title>
+
+    <!-- Google Fonts đồng bộ từ room-detail -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS Bootstrap & Icons -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- CSS Hệ thống -->
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/global-layout.css">
+    <link rel="stylesheet" href="../css/guidebook.css">
+</head>
+<body>
+
+    <!-- Tái sử dụng Thanh điều hướng chung -->
+    <header class="site-header sticky-top" data-include="header.html"></header>
+
+    <main class="guidebook-page container py-4">
+        
+        <!-- Header tiêu đề trang -->
+        <header class="guidebook-header mb-5">
+            <h1 class="guidebook-title">Cẩm nang du lịch Phú Yên</h1>
+            <p class="guidebook-subtitle text-muted">Khám phá những điều thú vị tại Phú Yên.</p>
+            
+            <!-- Thanh tìm kiếm & Bộ lọc Pills -->
+            <div class="row g-3 align-items-center mt-3">
+                <div class="col-md-6 col-lg-5">
+                    <div class="search-wrapper position-relative">
+                        <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                        <input type="text" id="search-input" class="form-control ps-5" placeholder="Tìm kiếm bài viết, địa điểm...">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-7 d-flex flex-wrap gap-2 justify-content-md-end filter-pills">
+                    <button class="btn btn-pill active">Tất cả</button>
+                    <button class="btn btn-pill">Ăn gì?</button>
+                    <button class="btn btn-pill">Chơi đâu?</button>
+                    <button class="btn btn-pill">Quán Cafe</button>
+                    <button class="btn btn-pill">Di chuyển</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Bố cục chính Grid: 8 cột Bài viết - 4 cột Sidebar -->
+        <div class="row g-4">
+            
+            <!-- CỘT TRÁI: DANH SÁCH BÀI VIẾT (8/12) -->
+            <div class="col-lg-8">
+                
+                <!-- 1. Bài viết lớn nổi bật (Featured Post) -->
+                <article class="card article-card card-featured mb-4 shadow-sm border-0 overflow-hidden">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6">
+                            <img src="../images/guidebook/40phuyen.jpg" class="img-fluid h-100 w-100 object-fit-cover" alt="ĐI PHÚ YÊN ĐI">
+                        </div>
+                        <div class="col-md-6 d-flex flex-column justify-content-between p-4">
+                            <div>
+                                <span class="badge text-primary bg-light-subtle mb-2">[Cẩm nang]</span>
+                                <h2 class="article-title mb-3">
+                                    <a href="https://mytour.vn/vi/blog/bai-viet/40-trai-nghiem-khong-the-bo-lo-khi-den-phu-yen.html" target="_blank" rel="noopener noreferrer">
+                                        40 trải nghiệm không thể bỏ lỡ khi đến Phú Yên
+                                    </a>
+                                </h2>
+                                <p class="article-excerpt text-muted">Đầm Ô Loan Phú Yên với cảnh đẹp mê đắm đã thu hút nhiều du khách. 
+                                    Hình ảnh thuyền đánh cá, bình minh và hoàng hôn tại đầm mang lại cảm giác lãng mạn...</p>
+                            </div>
+                            <div class="article-meta text-muted d-flex gap-3 mt-3">
+                                <span><i class="bi bi-calendar3 me-1"></i> 15 Tháng 1, 2026</span>
+                                <span>·</span>
+                                <span><i class="bi bi-clock me-1"></i> 8 phút đọc</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Grid 2 bài viết nhỏ phía dưới -->
+                <div class="row g-4">
+                    <!-- Bài viết nhỏ 1 -->
+                    <div class="col-md-6">
+                        <article class="card article-card shadow-sm border-0 h-100 overflow-hidden">
+                            <img src="../images/guidebook/caphepy.jpg" class="card-img-top object-fit-cover" alt="Cafe Phú Yên" style="height: 200px;">
+                            <div class="card-body d-flex flex-column justify-content-between p-4">
+                                <div>
+                                    <span class="badge text-primary bg-light-subtle mb-2">[Quán Cafe]</span>
+                                    <h3 class="article-title-sm mb-2"><a href="https://tuyhoago.com/quan-ca-phe-dep-o-phu-yen/" target="_blank" rel="noopener noreferrer">Top 10+ quán cafe view đẹp Phú Yên tha hồ checkin</a></h3>
+                                    <p class="article-excerpt text-muted small">Giữa tiết trời nắng nóng của mùa hè, còn gì tuyệt vời hơn khi được xoa dịu bởi những cơn gió mát rượi của biển cả xanh mát, 
+                                        bởi hàng dừa phủ bóng xanh mát, có ánh hoàng hôn nhuộm vàng đầy nên thơ...</p>
+                                </div>
+                                <div class="article-meta text-muted small mt-3">
+                                    <span>12 Tháng 6, 2026</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Bài viết nhỏ 2 -->
+                    <div class="col-md-6">
+                        <article class="card article-card shadow-sm border-0 h-100 overflow-hidden">
+                            <img src="../images/guidebook/amthucpy.jpg" class="card-img-top object-fit-cover" alt="Ẩm thực Phú Yên" style="height: 200px;">
+                            <div class="card-body d-flex flex-column justify-content-between p-4">
+                                <div>
+                                    <span class="badge text-primary bg-light-subtle mb-2">[Ẩm thực]</span>
+                                    <h3 class="article-title-sm mb-2"><a href="https://vinpearl.com/vi/dac-san-phu-yen" target="_blank" rel="noopener noreferrer">23 đặc sản Phú Yên nổi tiếng, trứ danh xứ Nẫu</a></h3>
+                                    <p class="article-excerpt text-muted small">Đặc sản Phú Yên là điểm nhấn đặc biệt trong hành trình khám phá vùng đất xứ Nẫu thân thương. Không cầu kỳ, hoa mỹ, ...</p>
+                                </div>
+                                <div class="article-meta text-muted small mt-3">
+                                    <span>10 Tháng 10, 2025</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CỘT PHẢI: SIDEBAR (4/12) -->
+            <div class="col-lg-4">
+                
+                <!-- Widget 1: CTA Banner Đặt phòng -->
+                <div class="widget-cta p-4 mb-4 text-white text-start rounded-3 d-flex flex-column justify-content-between">
+                    <div>
+                        <h4 class="fw-bold mb-3">Yêu thích những điểm đến này?</h4>
+                        <p class="small opacity-90">Đặt phòng ngay hôm nay để tận hưởng chuyến đi Phú Yên cùng Homeet.</p>
+                    </div>
+                    <a href="../index.html" class="btn btn-white w-100 py-2 mt-4 fw-bold">Khám phá ngay <i class="bi bi-arrow-right ms-1"></i></a>
+                </div>
+
+                <!-- Widget 2: Bài viết nổi bật (Top Trending) -->
+                <div class="card widget-trending p-4 mb-4 shadow-sm border-0">
+                    <h4 class="widget-title mb-4">Bài viết nổi bật</h4>
+                    <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+                        <li class="d-flex align-items-start gap-3">
+                            <span class="trending-rank">01</span>
+                            <div>
+                                <h5 class="trending-post-title mb-1"><a href="https://dulichviet.com.vn/tin-tuc/tong-hop-tron-bo-kinh-nghiem-du-lich-phu-yen-tu-tuc-chi-tiet-nhat" 
+                                    target="_blank" rel="noopener noreferrer">Tổng hợp trọn bộ kinh nghiệm du lịch Phú Yên tự túc 2026 chi tiết nhất</a></h5>
+                                <span class="text-muted small">1.2k lượt xem</span>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start gap-3">
+                            <span class="trending-rank">02</span>
+                            <div>
+                                <h5 class="trending-post-title mb-1"><a href="https://dulichviet.com.vn/tin-tuc/tong-hop-tron-bo-kinh-nghiem-du-lich-phu-yen-tu-tuc-chi-tiet-nhat" 
+                                    target="_blank" rel="noopener noreferrer">Những điều nên thử tại Phú Yên</a></h5>
+                                <span class="text-muted small">940 lượt xem</span>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start gap-3">
+                            <span class="trending-rank">03</span>
+                            <div>
+                                <h5 class="trending-post-title mb-1"><a href="https://dulichviet.com.vn/tin-tuc/tong-hop-tron-bo-kinh-nghiem-du-lich-phu-yen-tu-tuc-chi-tiet-nhat" 
+                                    target="_blank" rel="noopener noreferrer">Bí quyết du lịch Phú Yên</a></h5>
+                                <span class="text-muted small">815 lượt xem</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Widget 3: Bản tin Newsletter -->
+                <div class="card widget-newsletter p-4 shadow-sm border-0 text-start">
+                    <h4 class="widget-title mb-2">Bản tin Homeet</h4>
+                    <p class="text-muted small mb-3">Đăng ký nhận những mẹo du lịch hữu ích và các chương trình ưu đãi mới nhất mỗi tuần.</p>
+                    <form>
+                        <div class="mb-2">
+                            <input type="email" class="form-control py-2 text-start" placeholder="Email của bạn">
+                        </div>
+                        <button type="submit" class="btn btn-submit w-100 py-2 fw-bold">Đăng ký</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Tái sử dụng Chân trang chung -->
+    <footer class="site-footer" data-include="footer.html"></footer>
+
+    <!-- Scripts đồng bộ -->
+    <script src="../js/load-layout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Các file Script hệ thống khác -->
+    <script src="../js/load-layout.js"></script>
+    <!-- Nhúng file xử lý tìm kiếm bài viết -->
+    <script src="../js/guidebook.js"></script>
+</body>
+</html>

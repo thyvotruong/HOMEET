@@ -1,0 +1,138 @@
+/* =============================================
+   Homeet - Policy Page Style (Khung chuẩn 2026)
+   ============================================= */
+
+:root {
+    --color-bg-system: #FEF8F4;      
+    --color-navy: #182B3F;           
+    --color-primary-brand: #2b4e64;  
+    --font-global: 'Noto Serif', serif;
+    --radius-box: 16px; /* Bo góc lớn sang trọng theo mẫu */
+}
+
+.my-content-page {
+    background-color: var(--color-bg-system);
+    font-family: var(--font-global);
+    color: var(--color-navy);
+}
+
+/* ---- KHỐI TIÊU ĐỀ ĐẦU TRANG ---- */
+.policy-hero-section {
+    max-width: 900px;
+}
+
+.policy-main-title {
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--color-navy);
+}
+
+.policy-main-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.border-bottom-line {
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+/* ---- HỆ THỐNG MỤC LỤC TRÁI (STICKY) ---- */
+.policy-sidebar-sticky {
+    position: sticky;
+    top: 110px; /* Tách khoảng cách an toàn dưới thanh navbar header dính */
+    z-index: 10;
+}
+
+.sidebar-menu-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.1em;
+}
+
+.policy-nav-links .nav-link {
+    font-family: var(--font-global);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #64748b;
+    padding: 0.6rem 0;
+    background: transparent;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+    padding-left: 0;
+}
+
+/* Khi active hoặc hover sẽ đổi sang màu chữ Navy đặc trưng */
+.policy-nav-links .nav-link:hover,
+.policy-nav-links .nav-link.active {
+    color: var(--color-navy) !important;
+    font-weight: 700;
+    padding-left: 8px;
+    border-left: 2px solid var(--color-navy);
+}
+
+/* ---- KHỐI NỘI DUNG PHẢI (CARD TRẮNG) ---- */
+.policy-block-card {
+    border-radius: var(--radius-box) !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important; /* Viền mỏng như mẫu */
+    width: 100%;
+}
+
+.policy-card-title {
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--color-navy);
+}
+
+.policy-card-title i {
+    font-size: 1.25rem;
+    color: var(--color-primary-brand);
+}
+
+/* Định dạng cấu trúc chữ văn bản */
+.policy-text-body p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    text-align: justify;
+    color: #334155;
+}
+
+.policy-text-body ul {
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.policy-text-body ul li {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+    color: #334155;
+    list-style-type: square; /* Biểu tượng ô vuông tinh tế */
+}
+
+/* ---- RESPONSIVE DI ĐỘNG ---- */
+@media (max-width: 767.98px) {
+    .policy-sidebar-sticky {
+        position: relative;
+        top: 0;
+        margin-bottom: 2rem;
+    }
+    .policy-nav-links {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .policy-nav-links .nav-link {
+        border: 1px solid #cbd5e1;
+        padding: 6px 12px;
+        border-radius: 20px;
+        border-left: 1px solid #cbd5e1 !important;
+    }
+    .policy-nav-links .nav-link.active {
+        background-color: var(--color-navy);
+        color: #ffffff !important;
+        padding-left: 12px;
+    }
+}

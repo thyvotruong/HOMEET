@@ -477,6 +477,25 @@ a {
     border-top: 1px solid #c4c6cd;
 }
 
+/* KHỐI SỬA LỖI: Định dạng lưới cột an toàn cho Footer */
+.site-footer .d-flex {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    gap: 1.5rem !important; /* Tạo khoảng cách an toàn giữa các cột */
+}
+
+.footer-column {
+    flex: 1 1 220px !important; /* Cho phép các cột co giãn tự động với kích thước cơ sở 220px */
+    max-width: 280px !important; /* Khóa giới hạn trên không cho cột phình quá to */
+}
+
+/* Ưu tiên cột đầu tiên rộng hơn một chút để chứa đoạn văn bản mô tả dài */
+.footer-column:first-child {
+    flex: 1 1 320px !important;
+    max-width: 340px !important;
+}
+
 .footer-title {
     font-family: var(--font-serif);
     font-weight: 600;
@@ -587,7 +606,7 @@ a {
 }
 
 .footer-contact-list li i {
-    color: #cbd5e1; /* Màu icon trắng mờ đồng bộ style */[cite: 2]
+    color: #cbd5e1; /* Màu icon trắng mờ đồng bộ style */
     font-size: 1rem;
     margin-top: 2px;
 }
@@ -619,14 +638,14 @@ a {
 .footer-bottom {
     margin-top: 2.5rem;             /* Khoảng thở giữa các cột thông tin bên trên và dòng đáy */
     padding-top: 1.5rem;            /* Khoảng thở từ đường kẻ xuống chữ */
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Đường line ngang mờ sang trọng phân cách */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Đường line ngang mờ phân cách */
     text-align: center;             /* Căn chữ ra chính giữa */
 }
 
 .copyright-text {
-    font-family: var(--font-serif); /* Đảm bảo đồng bộ font serif */[cite: 2]
+    font-family: var(--font-serif); /* Đảm bảo đồng bộ font serif */
     font-size: 0.85rem;             /* Cỡ chữ bản quyền nhỏ gọn chuẩn responsive */
-    color: #cbd5e1;                 /* Màu chữ trắng xám dịu mắt, không bị chói */[cite: 2]
+    color: #cbd5e1;                 /* Màu chữ trắng xám dịu mắt, không bị chói */
     margin: 0;
     letter-spacing: 0.5px;
 }

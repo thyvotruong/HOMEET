@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ của tôi - Homeet</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets (Lưu ý đường dẫn từ thư mục pages quay về thư mục gốc) -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/profile.css">
+
+    <!-- Thêm CSS tùy biến cấu trúc thẻ phòng yêu thích & đơn đặt phòng -->
+    <style>
+        .fav-room-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+        }
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .fav-room-card:hover .card-img-wrapper img {
+            transform: scale(1.05);
+        }
+        .badge-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        .btn-heart-active {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            color: #dc3545;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 2;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn-heart-active:hover {
+            transform: scale(1.1);
+            background: #fff;
+        }
+        .bg-navy {
+            background-color: #182B3F !important;
+        }
+        
+        /* Giao diện hiển thị đơn đặt phòng thực tế */
+        .booking-card-item {
+            background: #ffffff;
+            border: 1px solid #eef2f5;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+        .booking-card-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(24, 43, 63, 0.08);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="site-header sticky-top" data-include="header.html"></header>
+
+    <main class="profile-page-wrapper py-5">
+        <div class="container">
+            <div class="profile-header mb-4">
+                <h1 class="page-title">Hồ sơ cá nhân</h1>
+                <p class="page-subtitle">Quản lý thông tin cá nhân, danh sách yêu thích và các chuyến đi của bạn tại Homeet.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- ================= CỘT TRÁI: THẺ PROFILE ================= -->
+                <div class="col-lg-4 col-md-5">
+                    <div class="profile-sidebar-card shadow-sm text-center p-4">
+                        <div class="avatar-container mx-auto mb-3">
+                            <img src="../images/avatar-thuy-nhu.jpg" alt="Avatar" class="profile-avatar" onerror="this.src='https://placehold.co/150'">
+                            <button class="btn-change-avatar" title="Đổi ảnh đại diện">
+                                <i class="bi bi-camera-fill"></i>
+                            </button>
+                        </div>
+
+                        <h3 class="user-name">Đinh Thuỳ Như</h3>
+                        <p class="user-role text-muted mb-4">Hồ sơ cá nhân</p>
+
+                        <div class="info-meta-list text-start mb-4">
+                            <div class="meta-item mb-3">
+                                <label class="meta-label">HỌ VÀ TÊN</label>
+                                <div class="meta-value" id="display-name">Đinh Thuỳ Như</div>
+                            </div>
+                            <span id="display-gender" class="d-none">Nữ</span>
+
+                            <div class="meta-item mb-3">
+                                <label class="meta-label">EMAIL</label>
+                                <div class="meta-value" id="display-email">nhudt123@gmail.com</div>
+                            </div>
+                            <div class="meta-item mb-3">
+                                <label class="meta-label">SỐ ĐIỆN THOẠI</label>
+                                <div class="meta-value" id="display-phone">+84 901 234 567</div>
+                            </div>
+                            <div class="meta-item mb-3">
+                                <label class="meta-label">ĐỊA CHỈ</label>
+                                <div class="meta-value" id="display-address">Quận 1, TP. Hồ Chí Minh</div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-edit-profile w-100 mb-4" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                            Chỉnh sửa hồ sơ
+                        </button>
+
+                        <div class="verification-status text-start pt-3 border-top">
+                            <div class="status-line text-success mb-2">
+                                <i class="bi bi-check-circle-fill me-2"></i> Đã xác minh danh tính
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= CỘT PHẢI: NỘI DUNG CHÍNH ================= -->
+                <div class="col-lg-8 col-md-7">
+                    
+                    <!-- DANH SÁCH YÊU THÍCH -->
+                    <div class="wishlist-section mb-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="section-title mb-0">Danh sách yêu thích</h2>
+                            <a href="#" class="view-all-link" id="wishlist-counter">Xem tất cả (0)</a>
+                        </div>
+                        
+                        <!-- Container nhận diện dữ liệu phòng yêu thích -->
+                        <div class="row g-3" id="wishlist-container">
+                            <div class="col-12 text-center py-4">
+                                <div class="spinner-border text-dark" role="status">
+                                    <span class="visually-hidden">Đang tải dữ liệu...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LỊCH SỬ ĐẶT PHÒNG -->
+                    <div class="booking-history-section mb-5">
+                        <h2 class="section-title mb-3">Lịch sử đặt phòng</h2>
+                        
+                        <ul class="nav nav-tabs-custom mb-3" id="bookingTabs">
+                            <li class="nav-item-custom active" data-tab="upcoming">Sắp tới</li>
+                            <li class="nav-item-custom" data-tab="completed">Đã hoàn thành</li>
+                            <li class="nav-item-custom" data-tab="cancelled">Đã hủy</li>
+                        </ul>
+
+                        <!-- Tab Sắp tới -->
+                        <div id="tab-content-upcoming" class="booking-tab-content">
+                            <!-- JS tự động đổ danh sách đơn đặt hoặc khung trống đồng bộ tại đây -->
+                        </div>
+
+                        <!-- Tab Đã hoàn thành -->
+                        <div id="tab-content-completed" class="booking-tab-content d-none">
+                            <!-- JS tự động đổ danh sách đơn đặt hoặc khung trống đồng bộ tại đây -->
+                        </div>
+
+                        <!-- Tab Đã hủy -->
+                        <div id="tab-content-cancelled" class="booking-tab-content d-none">
+                            <!-- JS tự động đổ danh sách đơn đặt hoặc khung trống đồng bộ tại đây -->
+                        </div>
+                    </div>
+
+                    <!-- CÀI ĐẶT TÀI KHOẢN -->
+                    <div class="account-settings-section">
+                        <h2 class="section-title mb-3">Cài đặt tài khoản</h2>
+                        <div class="row g-3">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="setting-box-card p-3 shadow-sm">
+                                    <div class="setting-icon-circle mb-3"><i class="bi bi-shield-lock"></i></div>
+                                    <h4 class="setting-box-title">Bảo mật</h4>
+                                    <p class="setting-box-desc text-muted small mb-0">Mật khẩu, xác thực 2 lớp</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="setting-box-card p-3 shadow-sm">
+                                    <div class="setting-icon-circle mb-3"><i class="bi bi-credit-card"></i></div>
+                                    <h4 class="setting-box-title">Thanh toán</h4>
+                                    <p class="setting-box-desc text-muted small mb-0">Quản lý thẻ, lịch sử giao dịch</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <div class="setting-box-card p-3 shadow-sm">
+                                    <div class="setting-icon-circle mb-3"><i class="bi bi-bell"></i></div>
+                                    <h4 class="setting-box-title">Thông báo</h4>
+                                    <p class="setting-box-desc text-muted small mb-0">Cài đặt tin nhắn và email</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL CHỈNH SỬA HỒ SƠ -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true" style="font-family: 'Noto Serif', serif;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow" style="background-color: #ffffff; border-radius: 16px;">
+                <div class="modal-header border-0 pb-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+                    <h5 class="modal-title fw-bold" id="editProfileModalLabel" style="color: #182B3F; font-size: 1.3rem;">Chỉnh sửa thông tin cá nhân</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="editProfileForm">
+                    <div class="modal-body px-4 py-3">
+                        <div class="mb-3">
+                            <label for="input-name" class="form-label small fw-bold text-muted">HỌ VÀ TÊN</label>
+                            <input type="text" class="form-control w-100 p-2 border rounded" id="input-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted d-block">GIỚI TÍNH</label>
+                            <div class="d-flex gap-3 pt-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="genderOptions" id="gender-male" value="Nam">
+                                    <label class="form-check-label small" for="gender-male">Nam</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="genderOptions" id="gender-female" value="Nữ">
+                                    <label class="form-check-label small" for="gender-female">Nữ</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="genderOptions" id="gender-other" value="Khác">
+                                    <label class="form-check-label small" for="gender-other">Khác</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="input-email" class="form-label small fw-bold text-muted">EMAIL</label>
+                            <input type="email" class="form-control w-100 p-2 border rounded" id="input-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="input-phone" class="form-label small fw-bold text-muted">SỐ ĐIỆN THOẠI</label>
+                            <input type="text" class="form-control w-100 p-2 border rounded" id="input-phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="input-address" class="form-label small fw-bold text-muted">ĐỊA CHỈ</label>
+                            <input type="text" class="form-control w-100 p-2 border rounded" id="input-address" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 pt-0 pb-4 px-4 d-flex gap-2">
+                        <button type="button" class="btn btn-outline-secondary px-4 py-2 rounded-pill flex-grow-1" data-bs-dismiss="modal">Thoát</button>
+                        <button type="submit" class="btn text-white px-4 py-2 rounded-pill flex-grow-1" style="background-color: #182B3F;">Cập nhật</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer" data-include="footer.html"></footer>
+
+    <!-- Scripts -->
+    <script src="../js/load-layout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JS Xử lý Modal & Tabs điều hướng -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // --- MODAL UPDATE PROFILE ---
+            const editModal = document.getElementById('editProfileModal');
+            const editForm = document.getElementById('editProfileForm');
+
+            if (editModal && editForm) {
+                editModal.addEventListener('show.bs.modal', function () {
+                    document.getElementById('input-name').value = document.getElementById('display-name').innerText.trim();
+                    document.getElementById('input-email').value = document.getElementById('display-email').innerText.trim();
+                    document.getElementById('input-phone').value = document.getElementById('display-phone').innerText.trim();
+                    document.getElementById('input-address').value = document.getElementById('display-address').innerText.trim();
+
+                    const currentGender = document.getElementById('display-gender').innerText.trim();
+                    if (currentGender === "Nam") document.getElementById('gender-male').checked = true;
+                    else if (currentGender === "Nữ") document.getElementById('gender-female').checked = true;
+                    else document.getElementById('gender-other').checked = true;
+                });
+
+                editForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const newName = document.getElementById('input-name').value;
+                    document.getElementById('display-name').innerText = newName;
+                    document.querySelector('.user-name').innerText = newName;
+                    document.getElementById('display-email').innerText = document.getElementById('input-email').value;
+                    document.getElementById('display-phone').innerText = document.getElementById('input-phone').value;
+                    document.getElementById('display-address').innerText = document.getElementById('input-address').value;
+                    document.getElementById('display-gender').innerText = document.querySelector('input[name="genderOptions"]:checked').value;
+
+                    bootstrap.Modal.getInstance(editModal).hide();
+                });
+            }
+
+            // --- SWITCH TABS ---
+            const tabs = document.querySelectorAll('.nav-item-custom');
+            const contents = document.querySelectorAll('.booking-tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    contents.forEach(content => content.classList.add('d-none'));
+                    document.getElementById(`tab-content-${this.getAttribute('data-tab')}`).classList.remove('d-none');
+                });
+            });
+        });
+    </script>
+
+    <!-- ================= ĐỒNG BỘ: HIỂN THỊ ĐƠN ĐẶT PHÒNG THỰC TẾ & DANH SÁCH YÊU THÍCH ================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Mảng dữ liệu phòng mẫu phòng hờ khi không đồng bộ được MockAPI
+            const localRoomsData = [
+                { id: "1", roomKey: "nghinh-phong", title: "Nghinh Phong", price: "990.000 VNĐ", img: "../images/room-nghinh-phong.jpg", rating: "4.92", desc: "Không gian ấm cúng dành cho cặp đôi...", badge: "Mới", badgeClass: "bg-success" },
+                { id: "2", roomKey: "hoa-vang", title: "Hoa Vàng", price: "1.590.000 VNĐ", img: "../images/room-hoa-vang.jpg", rating: "4.85", desc: "Không gian yên tĩnh, đầy đủ tiện nghi...", badge: "Mới", badgeClass: "bg-success" },
+                { id: "3", roomKey: "vung-ro", title: "Vũng Rô", price: "2.390.000 VNĐ", img: "../images/room-vung-ro.jpg", rating: "4.90", desc: "Sở hữu ban công riêng hướng biển...", badge: "Superhost", badgeClass: "bg-navy" },
+                { id: "4", roomKey: "mui-dien", title: "Mũi Điện", price: "2.390.000 VNĐ", img: "../images/room-mui-dien.jpg", rating: "5.0", desc: "Homestay view biển đẹp, đầy đủ tiện nghi...", badge: "Superhost", badgeClass: "bg-navy" }
+            ];
+
+            // Đọc dữ liệu phòng cache từ LocalStorage
+            let allRooms = localRoomsData;
+            try {
+                const savedRooms = localStorage.getItem('allRooms') || localStorage.getItem('rooms') || localStorage.getItem('roomsData');
+                if (savedRooms) allRooms = JSON.parse(savedRooms);
+            } catch(e) {
+                allRooms = localRoomsData;
+            }
+
+            // ----------------------------------------------------
+            // CHỨC NĂNG CHÍNH: QUẢN LÝ & IN RA ĐƠN ĐẶT PHÒNG LƯU VẾT
+            // ----------------------------------------------------
+            function renderBookingHistory() {
+                let bookings = [];
+                try {
+                    // Đọc đúng từ bộ lưu trữ gốc 'bookingHistory' khớp từ trang payment.html
+                    const rawBookings = localStorage.getItem('bookingHistory') || localStorage.getItem('bookings') || localStorage.getItem('bookedRooms');
+                    if (rawBookings) {
+                        bookings = JSON.parse(rawBookings);
+                        if (!Array.isArray(bookings)) bookings = [bookings];
+                    }
+                } catch(e) {
+                    bookings = [];
+                }
+
+                const statuses = ['upcoming', 'completed', 'cancelled'];
+                
+                statuses.forEach(status => {
+                    const container = document.getElementById(`tab-content-${status}`);
+                    if (!container) return;
+
+                    // Phân loại đơn hàng vào đúng tab lịch sử
+                    const matchingBookings = bookings.filter(item => {
+                        if (!item) return false;
+                        if (status === 'upcoming' && (!item.status || item.status === 'upcoming')) return true;
+                        return String(item.status) === status;
+                    });
+
+                    // Thiết lập câu text thông báo trống tương ứng cho từng tab
+                    let emptyMessage = "Chưa có đơn hàng nào";
+                    if (status === 'upcoming') emptyMessage = "Chưa có đơn hàng nào sắp tới";
+                    else if (status === 'completed') emptyMessage = "Chưa có đơn hàng nào đã hoàn thành";
+                    else if (status === 'cancelled') emptyMessage = "Chưa có đơn hàng nào đã hủy";
+
+                    // Trường hợp TRỐNG ĐƠN HÀNG
+                    if (matchingBookings.length === 0) {
+                        container.innerHTML = `
+                            <div class="py-5 text-center bg-white rounded shadow-sm border">
+                                <div class="text-muted">
+                                    <i class="bi bi-journal-x fs-1 d-block mb-2 text-secondary"></i>
+                                    <span>${emptyMessage}</span>
+                                </div>
+                            </div>`;
+                    } else {
+                        // Trường hợp CÓ ĐƠN HÀNG -> Tiến hành render danh sách
+                        container.innerHTML = '';
+                        matchingBookings.forEach(order => {
+                            // Khớp dữ liệu với danh sách phòng để lấy ảnh chuẩn
+                            const roomDetails = allRooms.find(r => 
+                                String(r.id) === String(order.roomId || order.id) || 
+                                String(r.roomKey) === String(order.roomKey)
+                            ) || localRoomsData[0];
+
+                            let picUrl = roomDetails.img || roomDetails.image || "../images/room-nghinh-phong.jpg";
+                            if (picUrl.startsWith("images/")) picUrl = "../" + picUrl;
+
+                            // LẤY INDEX GỐC CHUẨN XÁC TRONG MẢNG bookingHistory ĐỂ TRUYỀN QUA TRANG BOOKING.HTML
+                            const realIndex = bookings.indexOf(order);
+
+                            const cardHtml = `
+                                <div class="booking-card-item shadow-sm text-start">
+                                    <div class="row align-items-center g-3">
+                                        <div class="col-md-3 col-sm-4">
+                                            <img src="${picUrl}" class="img-fluid rounded border w-100" style="height: 110px; object-fit: cover;" alt="Room image">
+                                        </div>
+                                        <div class="col-md-5 col-sm-8">
+                                            <h5 class="fw-bold mb-2" style="color: #182B3F; font-size: 1.2rem;">${order.roomName || roomDetails.title || order.roomTitle || order.name || 'Phòng nghỉ Homeet'}</h5>
+                                            <div class="text-muted small mb-1"><i class="bi bi-calendar3 me-1"></i> <strong>Nhận phòng:</strong> ${order.checkIn || 'Chưa cập nhật'} | <strong>Trả phòng:</strong> ${order.checkOut || 'Chưa cập nhật'}</div>
+                                            <div class="text-muted small"><i class="bi bi-person-circle me-1"></i> <strong>Khách hàng:</strong> ${order.customerName || order.name || 'Đinh Thuỳ Như'}</div>
+                                        </div>
+                                        <div class="col-md-4 text-md-end text-start d-flex flex-column align-items-md-end justify-content-between gap-2">
+                                            <div class="fw-bold fs-5 text-dark mb-1">${order.totalAmount || order.totalPrice || order.price || roomDetails.price}</div>
+                                            <!-- CHỈ GIỮ LẠI DUY NHẤT 1 NÚT XEM CHI TIẾT ĐƠN ĐƯỢC LIÊN KẾT ĐƯỜNG DẪN CHUẨN -->
+                                            <a href="booking.html?index=${realIndex}" class="btn btn-sm text-white rounded-pill px-3 py-1.5 small" style="background-color: #182B3F; font-size: 0.85rem;">
+                                                <i class="bi bi-file-earmark-text me-1"></i>Xem chi tiết đơn
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            container.insertAdjacentHTML('beforeend', cardHtml);
+                        });
+                    }
+                });
+            }
+
+            // ----------------------------------------------------
+            // 2. CHỨC NĂNG CHÍNH: QUẢN LÝ & RENDERING DANH SÁCH YÊU THÍCH
+            // ----------------------------------------------------
+            function renderWishlist() {
+                const container = document.getElementById('wishlist-container');
+                const counter = document.getElementById('wishlist-counter');
+                if (!container) return;
+
+                let wishlist = [];
+                try {
+                    const rawData = localStorage.getItem('myWishlist');
+                    if (rawData) {
+                        wishlist = JSON.parse(rawData);
+                        if (!Array.isArray(wishlist)) wishlist = [wishlist];
+                    }
+                } catch (e) {
+                    wishlist = [];
+                }
+
+                if (counter) counter.textContent = `Xem tất cả (${wishlist.length})`;
+
+                if (wishlist.length === 0) {
+                    container.innerHTML = `
+                        <div class="col-12 py-5 text-center text-muted bg-white rounded border shadow-sm">
+                            <i class="bi bi-heartbreak fs-2 d-block mb-2 text-secondary"></i>
+                            <span>Danh sách yêu thích trống. Hãy quay lại trang chủ chọn phòng bạn yêu thích nhé!</span>
+                        </div>`;
+                    return;
+                }
+
+                container.innerHTML = '';
+                let renderedCount = 0;
+
+                wishlist.forEach((favItem) => {
+                    if (!favItem) return;
+
+                    const roomData = allRooms.find(r => 
+                        String(r.id) === String(favItem) || 
+                        String(r.roomKey) === String(favItem) ||
+                        String(r.title || r.name).toLowerCase().trim() === String(favItem).toLowerCase().trim()
+                    );
+
+                    if (roomData) {
+                        renderedCount++;
+                        
+                        let imageSrc = roomData.img || roomData.image || "../images/room-nghinh-phong.jpg";
+                        if (imageSrc.startsWith("images/")) imageSrc = "../" + imageSrc;
+
+                        const cardHtml = `
+                            <div class="col-sm-6" id="fav-item-${roomData.id}">
+                                <div class="fav-room-card shadow-sm">
+                                    <div class="card-img-wrapper">
+                                        <img src="${imageSrc}" alt="${roomData.title || roomData.name}" onerror="this.src='https://placehold.co/350x180'">
+                                        <span class="badge-tag ${roomData.badgeClass || 'bg-navy'} text-white">${roomData.badge || 'Superhost'}</span>
+                                        <button class="btn-heart-active btn-remove-wishlist" data-id="${favItem}" title="Bỏ thích">
+                                            <i class="bi bi-heart-fill"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body-content p-3 text-start">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <h4 class="room-card-title mb-0" style="font-size: 1.15rem; font-weight: 700;">
+                                                <a href="room-detail.html?id=${roomData.id}" class="text-decoration-none" style="color: #182B3F;">${roomData.title || roomData.name}</a>
+                                            </h4>
+                                            <span class="room-rating" style="font-size: 0.9rem; font-weight: 600;"><i class="bi bi-star-fill text-warning me-1"></i>${roomData.rating || '5.0'}</span>
+                                        </div>
+                                        <p class="room-card-desc text-muted small mb-2 text-truncate">${roomData.desc || roomData.description || 'Không gian nghỉ dưỡng tuyệt vời tại Phú Yên...'}</p>
+                                        <div class="room-card-price" style="font-size: 0.95rem; color: #182B3F;"><strong>${roomData.price}</strong> / ĐÊM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        container.insertAdjacentHTML('beforeend', cardHtml);
+                    }
+                });
+
+                if (renderedCount === 0) {
+                    container.innerHTML = `
+                        <div class="col-12 py-5 text-center text-muted bg-white rounded border shadow-sm">
+                            <i class="bi bi-exclamation-triangle fs-2 d-block mb-2 text-warning"></i>
+                            <span>Dữ liệu chưa đồng bộ. Hãy chọn lại phòng yêu thích ở trang chủ nhé!</span>
+                        </div>`;
+                }
+
+                // Gán sự kiện hủy tim nhanh
+                document.querySelectorAll('.btn-remove-wishlist').forEach(button => {
+                    button.onclick = function (e) {
+                        e.preventDefault();
+                        const idToRemove = this.getAttribute('data-id');
+                        let currentList = JSON.parse(localStorage.getItem('myWishlist')) || [];
+                        if (!Array.isArray(currentList)) currentList = [currentList];
+                        currentList = currentList.filter(item => String(item) !== String(idToRemove));
+                        localStorage.setItem('myWishlist', JSON.stringify(currentList));
+                        renderWishlist();
+                    };
+                });
+            }
+
+            // Chạy cả hai hàm hiển thị khi trang load xong
+            renderWishlist();
+            renderBookingHistory();
+        });
+    </script>
+</body>
+</html>

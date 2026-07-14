@@ -1,0 +1,264 @@
+/* ==========================================================================
+   THIẾT LẬP PHÔNG CHỮ VÀ NỀN TOÀN TRANG ĐỒNG BỘ
+   ========================================================================== */
+body {
+    font-family: 'Noto Serif', serif;
+    background-color: #F9F9F7; /* Màu nền kem nhạt ấm áp đặc trưng */
+    color: #182B3F;
+}
+
+/* --- Tiêu đề trang và badge --- */
+.booking-main-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #182B3F;
+}
+
+.badge-status-confirmed {
+    background-color: #E2F0FE;
+    color: #1A73E8;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+/* --- Các nút chức năng ở Header --- */
+.btn-action-light {
+    background-color: #ffffff;
+    color: #182B3F;
+    border: 1px solid #DCE1E6;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-action-light:hover {
+    background-color: #F1F3F5;
+    border-color: #BCC4CC;
+}
+
+.btn-action-dark {
+    background-color: #182B3F;
+    color: #ffffff;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-action-dark:hover {
+    background-color: #0f1d2b;
+}
+
+/* ==========================================================================
+   CẤU TRÚC KHỐI NỘI DUNG CHÍNH (CỘT TRÁI)
+   ========================================================================== */
+.booking-card-block {
+    background-color: #ffffff;
+    border: 1px solid #EAECEF;
+    border-radius: 12px;
+}
+
+.block-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #182B3F;
+}
+
+.edit-info-link {
+    font-size: 0.9rem;
+    color: #6C757D;
+    transition: color 0.2s ease;
+}
+
+.edit-info-link:hover {
+    color: #182B3F;
+}
+
+/* --- Thông tin khách hàng --- */
+.customer-avatar {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border: 2px solid #EAECEF;
+}
+
+.meta-label-small {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #A0AEC0;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.customer-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #182B3F;
+}
+
+.customer-contact-text {
+    font-size: 0.88rem;
+}
+
+.badge-profile-tag {
+    background-color: #F3F4F6;
+    color: #4B5563;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.special-request-text {
+    font-size: 0.9rem;
+    color: #4A5568;
+    line-height: 1.5;
+}
+
+/* Phân cách cột phụ trên màn hình máy tính lớn */
+@media (min-width: 768px) {
+    .border-start-md {
+        border-left: 1px solid #EAECEF !important;
+    }
+}
+
+/* --- Chi tiết phòng đặt --- */
+.room-preview-img {
+    object-fit: cover;
+    min-height: 200px;
+}
+
+.room-badge-overlay {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #182B3F;
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.room-detail-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #182B3F;
+}
+
+.room-location-text {
+    font-size: 0.85rem;
+}
+
+.room-code-badge {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #182B3F;
+    background-color: #F3F4F6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.date-highlight {
+    font-size: 1.05rem;
+    color: #182B3F;
+    display: block;
+    margin-top: 2px;
+}
+
+.time-sub {
+    font-size: 0.8rem;
+}
+
+.room-utilities-footer span {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* --- Khối Tóm tắt thanh toán --- */
+.payment-details-list .text-muted {
+    font-size: 0.95rem;
+}
+
+.payment-details-list .fw-semibold {
+    color: #182B3F;
+    font-size: 0.95rem;
+}
+
+/* Hộp chứa thẻ thanh toán bên dưới */
+.method-payment-box {
+    background-color: #FDFBF7; /* Nền kem sáng nhạt theo mẫu thiết kế */
+    border: 1px solid #EAECEF;
+    border-radius: 8px;
+}
+
+.small-title-card {
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   CẤU TRÚC THANH BÊN (CỘT PHẢI)
+   ========================================================================== */
+.sidebar-block-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #182B3F;
+}
+
+/* --- Khối thao tác nhanh (Navy Sidebar) --- */
+.quick-actions-sidebar {
+    background-color: #182B3F;
+    border-radius: 12px;
+}
+
+.btn-sidebar-action-light {
+    background-color: #ffffff;
+    color: #182B3F;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.btn-sidebar-action-light:hover {
+    background-color: #F1F3F5;
+}
+
+.btn-sidebar-action-danger {
+    background-color: #B91C1C;
+    color: #ffffff;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.btn-sidebar-action-danger:hover {
+    background-color: #991B1B;
+}
+
+/* Tiện ích thiết lập chữ nghiêng cho các đoạn trích dẫn */
+.italic {
+    font-style: italic;
+}

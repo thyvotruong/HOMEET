@@ -1,0 +1,161 @@
+/* =============================================
+   Homeet - Admin Dashboard Style (Kế thừa Client)
+   ============================================= */
+
+:root {
+    --color-bg-system: #FEF8F4;      /* Màu nền hệ thống mượt mà */
+    --color-navy: #182B3F;           /* Màu xanh Navy đậm đà chủ đạo */
+    --color-primary-brand: #2b4e64;  /* Màu thương hiệu phụ */
+    --font-global: 'Noto Serif', serif;
+    --radius-box: 12px;
+}
+
+/* Kế thừa font và màu nền hệ thống mượt mà từ Client */
+body {
+    font-family: var(--font-global);
+    background-color: var(--color-bg-system);
+    color: var(--color-navy);
+}
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ---- THANH SIDEBAR MENU CHUYÊN NGHIỆP ---- */
+.admin-sidebar {
+    width: 260px;
+    background-color: var(--color-navy); /* Sử dụng chuẩn màu Navy của Homeet */
+    color: #ffffff;
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    z-index: 100;
+    padding: 25px 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-menu .nav-link {
+    font-family: var(--font-global);
+    color: #cbd5e1;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+/* Hiệu ứng Hover và Active chuyển sang màu trắng/xám Slate mượt mà */
+.sidebar-menu .nav-link:hover, 
+.sidebar-menu .nav-link.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1); 
+    font-weight: 600;
+}
+
+/* ---- VÙNG NỘI DUNG CHÍNH PHÍA PHẢI ---- */
+.admin-content {
+    margin-left: 260px;
+    flex: 1;
+    padding: 40px;
+    width: calc(100% - 260px);
+}
+
+/* ---- THẺ THỐNG KÊ (STAT CARDS) ---- */
+.stat-card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: var(--radius-box);
+    box-shadow: 0 4px 15px rgba(24, 43, 63, 0.04); /* Đổ bóng mịn với tông màu Navy */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(24, 43, 63, 0.08);
+}
+
+/* ---- ĐỒNG BỘ THANH TÌM KIẾM TRA CỨU MÃ ĐƠN ---- */
+#search-input {
+    font-family: var(--font-global);
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+    padding: 0.6rem 1rem;
+    color: var(--color-navy);
+}
+
+#search-input:focus {
+    box-shadow: 0 0 0 3px rgba(24, 43, 63, 0.1) !important;
+    border-color: var(--color-navy) !important;
+}
+
+/* Nút bấm tìm kiếm tông Navy đồng bộ với nút messenger/FAQ */
+#btn-search, .btn-primary {
+    background-color: var(--color-navy) !important;
+    border-color: var(--color-navy) !important;
+    font-family: var(--font-global);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+#btn-search:hover, .btn-primary:hover {
+    background-color: var(--color-primary-brand) !important;
+    border-color: var(--color-primary-brand) !important;
+}
+
+/* ---- BẢNG BIỂU QUẢN TRỊ (TABLES) ---- */
+.card {
+    background-color: #ffffff;
+    border-radius: var(--radius-box) !important;
+    border: none;
+    box-shadow: 0 4px 15px rgba(24, 43, 63, 0.04);
+}
+
+.table {
+    color: var(--color-navy);
+}
+
+.table-light {
+    background-color: #f8fafc !important;
+    color: var(--color-navy);
+}
+
+.table th {
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.table td {
+    border-bottom: 1px solid #f1f5f9;
+    padding: 1rem 0.75rem;
+}
+
+/* ---- TRANG ĐĂNG NHẬP ADMIN (LOGIN) ---- */
+.login-bg {
+    background-color: var(--color-navy); /* Nền xanh Navy sâu thẳm cực sang */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-bg .card {
+    border-radius: 16px !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+}
+
+.login-bg .form-control {
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+}
+
+.login-bg .form-control:focus {
+    box-shadow: 0 0 0 3px rgba(24, 43, 63, 0.15) !important;
+    border-color: var(--color-navy) !important;
+}

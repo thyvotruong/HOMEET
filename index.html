@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homeet</title>
 
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -16,75 +15,32 @@
 </head>
 <body>
 
-    <!-- Navigation -->
-    <header class="site-header sticky-top">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid px-lg-4">
-                <a class="navbar-brand" href="#">
-                    <img src="images/logo.png" alt="Homeet" class="site-logo">
-                </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Mở menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="mainNav">
-                    <ul class="navbar-nav mx-lg-auto gap-lg-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Trang Chủ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Cẩm nang du lịch</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Liên hệ &amp; Hỗ trợ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Về chúng tôi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Các chính sách</a>
-                        </li>
-                    </ul>
-
-                    <a href="#" class="btn btn-login">
-                        <i class="bi bi-person-fill"></i>
-                        <span>Đăng nhập / Đăng ký</span>
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Navigation (Tải động từ thư mục pages) -->
+    <header class="site-header sticky-top" data-include="pages/header.html"></header>
 
     <main>
         <!-- Hero -->
         <section class="hero-section">
             <!-- Bootstrap Carousel -->
             <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
-                <!-- Các nút gạch ngang nhỏ dưới đáy slide (Tùy chọn, xóa nếu không thích) -->
                 <div class="carousel-indicators mb-5">
                     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
                     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
                 </div>
 
-                <!-- Khung chứa danh sách các ảnh slide -->
                 <div class="carousel-inner hero-image">
-                    <!-- Ảnh 1 (Bắt buộc phải có class 'active') -->
                     <div class="carousel-item active">
                         <img src="images/hero1.JPG" alt="Phú Yên Hero 1">
                     </div>
-                    <!-- Ảnh 2 -->
                     <div class="carousel-item">
                         <img src="images/hero2.JPG" alt="Phú Yên Hero 2">
                     </div>
-                    <!-- Ảnh 3 -->
                     <div class="carousel-item">
                         <img src="images/hero3.JPG" alt="Phú Yên Hero 3">
                     </div>
                 </div>
 
-                <!-- Hai nút bấm Mũi tên Trái / Phải để chuyển slide -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
@@ -121,72 +77,19 @@
         </section>
 
         <!-- Accommodation -->
-        <section class="section-accommodation py-5">
+        <section id="accommodation-section" class="section-accommodation py-5">
             <div class="container">
                 <div class="section-header text-center text-lg-start mb-4 mb-lg-5">
                     <h2 class="section-title">Không gian lưu trú</h2>
                     <p class="section-subtitle">Mỗi căn phòng là một câu chuyện, được lấy cảm hứng từ những địa danh biểu tượng của Phú Yên.</p>
                 </div>
 
-                <div class="row g-4 g-lg-5">
-                    <div class="col-md-6">
-                        <article class="room-card">
-                            <div class="room-card-image">
-                                <img src="images/room-nghinh-phong.jpg" alt="Phòng Nghinh Phong">
-                            </div>
-                            <div class="room-card-body">
-                                <div>
-                                    <h3 class="room-name">Nghinh Phong</h3>
-                                    <p class="room-price">990.000 VNĐ / ĐÊM</p>
-                                </div>
-                                <a href="#" class="btn btn-detail">Chi tiết</a>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-md-6">
-                        <article class="room-card">
-                            <div class="room-card-image">
-                                <img src="images/room-hoa-vang.jpg" alt="Phòng Hoa Vàng">
-                            </div>
-                            <div class="room-card-body">
-                                <div>
-                                    <h3 class="room-name">Hoa Vàng</h3>
-                                    <p class="room-price">1.590.000 VNĐ / ĐÊM</p>
-                                </div>
-                                <a href="#" class="btn btn-detail">Chi tiết</a>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-md-6">
-                        <article class="room-card">
-                            <div class="room-card-image">
-                                <img src="images/room-vung-ro.jpg" alt="Phòng Vũng Rô">
-                            </div>
-                            <div class="room-card-body">
-                                <div>
-                                    <h3 class="room-name">Vũng Rô</h3>
-                                    <p class="room-price">2.390.000 VNĐ / ĐÊM</p>
-                                </div>
-                                <a href="#" class="btn btn-detail">Chi tiết</a>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-md-6">
-                        <article class="room-card">
-                            <div class="room-card-image">
-                                <img src="images/room-mui-dien.jpg" alt="Phòng Mũi Điện">
-                            </div>
-                            <div class="room-card-body">
-                                <div>
-                                    <h3 class="room-name">Mũi Điện</h3>
-                                    <p class="room-price">3.490.000 VNĐ / ĐÊM</p>
-                                </div>
-                                <a href="#" class="btn btn-detail">Chi tiết</a>
-                            </div>
-                        </article>
+                <!-- Thay thế danh sách tĩnh bằng Container nhận dữ liệu động từ MockAPI -->
+                <div id="homeet-room-container" class="row g-4 g-lg-5">
+                    <div class="col-12 text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Đang tải...</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -257,7 +160,7 @@
                                 <img src="images/review-2.jpg" alt="Ảnh chuyến đi của Minh Vy">
                             </div>
                             <blockquote class="review-text">
-                                “Gia đình mọi người đều rất hài lòng. Phòng sạch sẽ, không gian yên tĩnh, các bạn nhân viên thân thiện. Con người Phú Yên cũng rất chân chất, dễ mến nên chuyến đi để lại nhiều kỷ niệm đẹp.”
+                                “Gia định mọi người đều rất hài lòng. Phòng sạch sẽ, không gian yên tĩnh, các bạn nhân viên thân thiện. Con người Phú Yên cũng rất chân chất, dễ mến nên chuyến đi để lại nhiều kỷ niệm đẹp.”
                             </blockquote>
                             <div class="review-stars" aria-label="5 sao">
                                 <i class="bi bi-star-fill"></i>
@@ -299,92 +202,25 @@
         </section>
     </main>
 
-   <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container py-5">
-            <!-- Thay row bằng d-flex flex-wrap và justify-content-between để tự động dạt đều sang 2 bên lề -->
-            <div class="d-flex flex-wrap justify-content-between row-gap-4">
-                
-                <!-- Cột 1: Về Homeet (Giữ độ rộng vừa phải để tránh lấn át) -->
-                <div class="footer-column" style="flex: 1 1 280px; max-width: 320px;">
-                    <h4 class="footer-title">Về Homeet</h4>
-                    <p class="footer-text">Homeet được hình thành từ mong muốn mang đến cho du khách những không gian lưu trú ấm cúng, tiện nghi và gần gũi như chính ngôi nhà của mình. Chúng tôi tin rằng mỗi chuyến đi không chỉ là hành trình khám phá mà còn là cơ hội để tận hưởng những khoảnh khắc thư giãn và tạo nên những kỷ niệm đáng nhớ.</p>
-                </div>
+    <!-- Footer (Tải động từ thư mục pages) -->
+    <footer class="site-footer" data-include="pages/footer.html"></footer>
 
-                <!-- Cột 2: Liên hệ với chúng tôi -->
-                <div class="footer-column" style="flex: 1 1 240px; max-width: 280px;">
-                    <h4 class="footer-title">Liên hệ với chúng tôi</h4>
-                    <ul class="footer-contact-list">
-                        <li>
-                            <i class="bi bi-telephone-fill"></i>
-                            <span>Hotline: <strong>1900.3322</strong></span>
-                        </li>
-                        <li>
-                            <i class="bi bi-geo-alt-fill"></i>
-                            <span>05 Phan Lưu Thanh, Phường 7, TP Tuy Hoà, Tỉnh Phú Yên.</span>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Script xử lý cuộn trang mượt mà -->
+    <script>
+        document.querySelector('.search-bar').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const targetSection = document.getElementById('accommodation-section');
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    </script>
 
-                <!-- Cột 3: Hỗ trợ khách hàng (Thoải mái chiều ngang, tiêu đề không lo bị bẻ đôi) -->
-                <div class="footer-column" style="flex: 1 1 200px; max-width: 240px;">
-                    <h4 class="footer-title">Hỗ trợ khách hàng</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Trung tâm FAQ</a></li>
-                        <li><a href="#">Chính sách đặt phòng</a></li>
-                        <li><a href="#">Chính sách thanh toán</a></li>
-                        <li><a href="#">Chính sách hoàn tiền</a></li>
-                        <li><a href="#">Chính sách bảo mật</a></li>
-                    </ul>
-                </div>
-
-                <!-- Cột 4: Phương thức thanh toán & Kết nối -->
-                <div class="footer-column" style="flex: 1 1 240px; max-width: 260px;">
-                    <!-- Nhóm thanh toán -->
-                    <div class="mb-4">
-                        <h4 class="footer-title">Phương thức thanh toán</h4>
-                        <div class="footer-icons">
-                            <img src="images/payment-momo.png" alt="MoMo">
-                            <img src="images/payment-vietqr.png" alt="VietQR">
-                            <img src="images/payment-card.png" alt="Thẻ tín dụng">
-                            <img src="images/payment-vnpay.png" alt="VNPay">
-                        </div>
-                    </div>
-
-                    <!-- Nhóm kết nối và Bộ công thương -->
-                    <div class="footer-connection-group">
-                        <div class="mb-2">
-                            <h4 class="footer-title mb-2">Kết nối với Homeet</h4>
-                            <div class="footer-socials">
-                                <a href="#" class="social-icon-btn">
-                                    <i class="bi bi-facebook"></i>
-                                </a>
-                                <a href="#" class="social-icon-btn">
-                                    <i class="bi bi-tiktok"></i>
-                                </a>
-                                <a href="#" class="social-icon-btn">
-                                    <i class="bi bi-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="bct-wrapper">
-                            <a href="#" target="_blank" rel="nofollow">
-                                <img src="images/bo-cong-thuong.png" alt="Đã thông báo Bộ Công Thương" class="bct-logo">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div> <!-- Hết khối d-flex -->
-
-            <!-- Bản quyền -->
-            <div class="footer-bottom">
-                <p class="copyright-text">Copyright © 2026 HOMEET.</p>
-            </div>
-
-        </div> <!-- Hết class="container" -->
-    </footer>
-
+    <!-- Các Script cấu trúc hệ thống -->
+    <script src="js/load-layout.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- NHÚNG FILE XỬ LÝ API CHUNG -->
+    <script src="js/danh-sach-phong.js"></script>
 </body>
 </html>

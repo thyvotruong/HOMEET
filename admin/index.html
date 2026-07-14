@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tổng Quan Hệ Thống - Homeet Admin</title>
+    <!-- 1. Đường dẫn lùi 1 thư mục để ra tầng chứa file CSS Client của bạn (Kiểm tra lại xem file bootstrap.css nằm ở đâu nha) -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <!-- 2. Thư viện Icons bắt buộc để hiện thị ký hiệu lịch, người dùng -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- 3. File CSS Admin của bạn -->
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Nơi file admin-shared.js tự động bơm thanh Sidebar dọc vào đây -->
+        <div id="sidebar-container"></div>
+        
+        <!-- TOÀN BỘ NỘI DUNG PHẢI NẰM TRONG KHỐI NÀY ĐỂ KHÔNG BỊ VỠ LAYOUT -->
+        <main class="admin-content">
+            <h2 class="fw-bold mb-4">Tổng quan hệ thống</h2>
+            
+            <!-- Thống kê nhanh dạng Cards -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card stat-card bg-white p-4 border-start border-primary border-4">
+                        <p class="text-muted small mb-1 fw-bold">TỔNG DOANH THU</p>
+                        <h3 class="fw-bold mb-0">0đ</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card stat-card bg-white p-4 border-start border-success border-4">
+                        <p class="text-muted small mb-1 fw-bold">ĐƠN ĐÃ THANH TOÁN</p>
+                        <h3 class="fw-bold text-success mb-0" id="count-paid">0 Đơn</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card stat-card bg-white p-4 border-start border-warning border-4">
+                        <p class="text-muted small mb-1 fw-bold">KHÁCH ĐANG Ở (CHECKED-IN)</p>
+                        <h3 class="fw-bold text-warning mb-0" id="count-active">0 Phòng</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KHỐI QUẢN LÝ LỊCH TRỐNG 4 PHÒNG TRONG TUẦN -->
+            <div class="card shadow-sm border-0 p-4 mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                    <h5 class="fw-bold mb-0">
+                        <i class="bi bi-calendar3 me-2 text-secondary"></i>Lịch trống & Trạng thái đặt phòng
+                    </h5>
+                    <!-- Bộ nút điều hướng chuyển tuần linh hoạt -->
+                    <div class="d-flex align-items-center gap-2">
+                        <button id="btn-prev-week" class="btn btn-sm btn-outline-secondary"><i class="bi bi-chevron-left"></i> Tuần trước</button>
+                        <span id="calendar-current-month" class="badge bg-light text-muted border px-3 py-2 fw-bold small">Tháng -- / ----</span>
+                        <button id="btn-next-week" class="btn btn-sm btn-outline-secondary">Tuần sau <i class="bi bi-chevron-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered text-center align-middle mb-0" style="table-layout: fixed; min-width: 800px;">
+                        <thead class="table-light">
+                            <tr id="calendar-thead-tr">
+                                <th style="width: 180px;" class="text-start">Hạng Phòng</th>
+                                <!-- Ngày tháng động từ Thứ 2 đến Chủ nhật sẽ tự sinh ra ở đây -->
+                            </tr>
+                        </thead>
+                        <tbody id="room-calendar-tbody">
+                            <!-- JavaScript sẽ tự động tính toán bận/trống để render vào đây -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex gap-3 mt-3 small">
+                    <div><span class="badge bg-light border text-dark px-2 me-1">   </span> Phòng còn trống</div>
+                    <div><span class="badge px-2 me-1" style="background-color: var(--color-navy); color: #fff;">   </span> Đã được đặt (Check-in)</div>
+                </div>
+            </div>
+
+            <!-- BẢNG HOẠT ĐỘNG ĐẶT PHÒNG MỚI NHẤT -->
+            <div class="card shadow-sm border-0 p-4">
+                <h5 class="fw-bold mb-3">Hoạt động đặt phòng mới nhất</h5>
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Mã đơn</th>
+                                <th>Khách hàng</th>
+                                <th>Phòng đặt</th>
+                                <th>Tổng tiền</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="latest-bookings-tbody">
+                            <!-- Dữ liệu từ JS đổ vào đây -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Gọi các file JS xử lý (đảm bảo đúng thư mục) -->
+    <script src="../js/backend-service.js"></script>
+    <script src="js/admin-shared.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

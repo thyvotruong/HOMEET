@@ -1,0 +1,305 @@
+/* ===================================================
+   Homeet - Trang Cá Nhân & Lịch Sử Đặt Phòng CSS (Noto Serif & White BG)
+   =================================================== */
+
+body, .profile-page-wrapper, .profile-page-wrapper * {
+    font-family: 'Noto Serif', serif !important;
+}
+
+.profile-page-wrapper {
+    background-color: #F8F2EE !important; 
+}
+
+/* Định dạng tiêu đề chính của trang */
+.page-title {
+    color: #182B3F;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.page-subtitle {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+/* ================= CỘT TRÁI: PROFILE SIDEBAR CARD ================= */
+.profile-sidebar-card {
+    background: #ffffff;
+    border: 1px solid rgba(196, 198, 205, 0.4);
+    border-radius: 16px;
+    position: sticky;
+    top: 95px;
+}
+
+/* Avatar và Nút đổi ảnh */
+.avatar-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.btn-change-avatar {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background: #182B3F;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: transform 0.2s ease;
+}
+.btn-change-avatar:hover {
+    transform: scale(1.1);
+}
+
+.user-name {
+    color: #182B3F;
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin-bottom: 2px;
+}
+.user-role {
+    font-size: 0.9rem;
+}
+
+/* Khối văn bản thông tin chi tiết */
+.meta-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #a0a5b5;
+    margin-bottom: 2px;
+    display: block;
+}
+.meta-value {
+    font-size: 0.95rem;
+    color: #182B3F;
+    word-break: break-all;
+}
+
+/* Nút Chỉnh sửa hồ sơ màu Navy thương hiệu */
+.btn-edit-profile {
+    background-color: #182B3F !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 0.6rem 1rem;
+    transition: background-color 0.2s ease;
+    border: none;
+}
+.btn-edit-profile:hover {
+    background-color: #243f5c !important;
+}
+
+.verification-status {
+    font-size: 0.88rem;
+}
+
+/* ================= CỘT PHẢI: NỘI DUNG CHÍNH ================= */
+.section-title {
+    color: #182B3F;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+.view-all-link {
+    color: #6c757d;
+    text-decoration: underline;
+    font-size: 0.88rem;
+}
+.view-all-link:hover {
+    color: #182B3F;
+}
+
+/* --- 1. Giao diện Danh sách yêu thích --- */
+.fav-room-card {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(196, 198, 205, 0.35);
+}
+.card-img-wrapper {
+    position: relative;
+    height: 180px;
+    width: 100%;
+}
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.badge-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+.bg-navy { background-color: #182B3F; }
+
+.btn-heart-active {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ffffff;
+    border: none;
+    color: #ff4d4f;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.room-card-title {
+    font-size: 1.05rem;
+    color: #182B3F;
+    font-weight: 600;
+}
+.room-rating {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.room-card-price {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+.room-card-price strong {
+    color: #182B3F;
+}
+
+/* --- 2. Giao diện Lịch sử đặt phòng (Tabs & Card) --- */
+.nav-tabs-custom {
+    display: flex;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgba(196, 198, 205, 0.4);
+    padding-left: 0;
+    list-style: none;
+}
+.nav-item-custom {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #6c757d;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+    position: relative;
+}
+.nav-item-custom.active {
+    color: #182B3F;
+}
+.nav-item-custom.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #182B3F;
+}
+
+/* Khối thông tin Đặt phòng dòng ngang */
+.booking-item-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid rgba(196, 198, 205, 0.4);
+}
+.booking-item-img {
+    width: 130px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.booking-status-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #6c757d;
+    letter-spacing: 0.5px;
+}
+.booking-room-name {
+    font-size: 1.2rem;
+    color: #182B3F;
+    font-weight: 600;
+}
+.booking-meta-text {
+    font-size: 0.88rem;
+}
+.booking-total-price {
+    font-size: 0.88rem;
+    color: #6c757d;
+}
+.booking-total-price strong {
+    color: #182B3F;
+    font-size: 1rem;
+}
+
+/* Các nút hành động bên phải thẻ đặt phòng */
+.btn-action-dark {
+    background-color: #182B3F !important;
+    color: #ffffff !important;
+    font-weight: 500;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    border: none;
+    white-space: nowrap;
+}
+.btn-action-dark:hover {
+    background-color: #243f5c !important;
+}
+.btn-action-outline {
+    background-color: transparent !important;
+    color: #6c757d !important;
+    border: 1px solid rgba(196, 198, 205, 0.7) !important;
+    font-weight: 500;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+.btn-action-outline:hover {
+    background-color: #f8f9fa !important;
+    color: #182B3F !important;
+    border-color: #182B3F !important;
+}
+
+/* --- 3. Cài đặt tài khoản (Hộp chức năng) --- */
+.setting-box-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid rgba(196, 198, 205, 0.35);
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.setting-box-card:hover {
+    transform: translateY(-2px);
+    border-color: #182B3F;
+}
+.setting-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(24, 43, 63, 0.05);
+    color: #182B3F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+.setting-box-title {
+    font-size: 1.05rem;
+    color: #182B3F;
+    font-weight: 600;
+    margin-bottom: 4px;
+}

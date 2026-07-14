@@ -1,0 +1,141 @@
+/* =============================================
+   Homeet - About Us Page Style
+   ============================================= */
+
+:root {
+    --color-bg-system: #FEF8F4;      /* Màu nền chuẩn hệ thống */
+    --color-navy: #182B3F;           /* Màu text chính */
+    --font-global: 'Noto Serif', serif;
+}
+
+.my-content-page {
+    background-color: var(--color-bg-system);
+    font-family: var(--font-global);
+    color: var(--color-navy);
+}
+
+/* ---- SECTION 1: HERO BANNER TOP ---- */
+.about-hero-section .hero-img-box {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 4px solid #ffffff; /* Tạo vệt ranh giới nhẹ */
+}
+
+/* ---- CONFIG CHỮ TRONG CÁC KHỐI ---- */
+.about-block-section {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-sub-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #6c757d;
+    letter-spacing: 0.12em;
+}
+
+.about-section-title {
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--color-navy);
+    line-height: 1.4;
+}
+
+.about-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* ---- XỬ LÝ KHUNG ẢNH CHUẨN ALIGN (HÌNH ẢNH MẪU) ---- */
+.about-img-wrapper {
+    width: 100%;
+    background-color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.about-img-wrapper:hover {
+    transform: translateY(-4px);
+}
+
+/* Ép ảnh dọc tỉ lệ chuẩn 3:4 giống ảnh 1 */
+.img-vertical {
+    aspect-ratio: 3 / 4;
+    max-height: 520px;
+}
+
+/* Ép ảnh ngang tỉ lệ chuẩn 16:10 giống ảnh 2 */
+.img-horizontal {
+    aspect-ratio: 16 / 10;
+    max-height: 340px;
+}
+
+/* Responsive chỉnh khoảng cách trên Mobile */
+@media (max-width: 767.98px) {
+    .about-hero-section .hero-img-box {
+        height: 120px;
+    }
+    .about-section-title {
+        margin-top: 10px;
+    }
+    .img-vertical, .img-horizontal {
+        max-height: 300px;
+    }
+}
+
+/* ---- SECTION MỚI: TẦM NHÌN - SỨ MỆNH - GIÁ TRỊ (ĐÃ GIẢM CHIỀU CAO) ---- */
+.about-values-section {
+    background-color: #EFE6DE; 
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw; 
+    /* Giảm padding dọc của section xuống */
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.values-main-title {
+    font-weight: 700;
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem); /* Giảm nhẹ size chữ tiêu đề */
+    color: var(--color-navy);
+    letter-spacing: 0.05em;
+}
+
+.values-main-subtitle {
+    font-size: 0.9rem;
+    max-width: 600px;
+    margin-bottom: 2.5rem !important; /* Thu hẹp khoảng cách với các ô card phía dưới */
+}
+
+/* Style cho các khối hộp trắng */
+.value-card {
+    border-radius: 16px; 
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    min-height: 190px; /* Hạ chiều cao tối thiểu từ 250px xuống 190px để card dẹt, gọn hơn */
+    padding: 1.5rem !important; /* Giảm padding bên trong card */
+}
+
+.value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(24, 43, 63, 0.06) !important;
+}
+
+.value-card-title {
+    font-size: 1.15rem; /* Giảm nhẹ size chữ title của card */
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-bottom: 0.5rem !important;
+}
+
+.value-card-desc {
+    font-size: 0.85rem; /* Giảm size chữ mô tả xuống một chút để khít khung hình */
+    line-height: 1.5;
+    text-align: center;
+}

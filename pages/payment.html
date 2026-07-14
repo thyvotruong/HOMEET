@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán đơn đặt phòng - Homeet</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/payment.css">
+</head>
+<body>
+
+    <header class="site-header sticky-top" data-include="header.html" data-auth="logged-in"></header>
+
+    <main class="payment-page-wrapper py-5">
+        <div class="container">
+            <!-- Vùng hiển thị thông báo cảnh báo sức chứa -->
+            <div id="capacity-alert-container"></div>
+
+            <div class="row g-4">
+                
+                <!-- ================= CỘT TRÁI: KHU VỰC THAY ĐỔI TRẠNG THÁI TRỰC TIẾP ================= -->
+                <div class="col-lg-7 col-md-12">
+                    
+                    <!-- PHẦN A: BẢNG NHẬP LIỆU THÔNG TIN (MẶC ĐỊNH HIỂN THỊ) -->
+                    <div id="form-booking-section">
+                        <!-- Khối 1: Chuyến đi -->
+                        <div class="payment-card-block p-4 mb-4 shadow-sm">
+                            <h2 class="block-title mb-4"><i class="bi bi-calendar3 me-2"></i>Chuyến đi của bạn</h2>
+                            <div class="row g-3">
+                                <div class="col-sm-4">
+                                    <label class="form-label-custom">Ngày nhận phòng</label>
+                                    <input type="date" id="checkin-date" class="form-control-custom" value="2026-07-24">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label-custom">Ngày trả phòng</label>
+                                    <input type="date" id="checkout-date" class="form-control-custom" value="2026-07-27">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label-custom">Số khách</label>
+                                    <select id="total-guests" class="form-control-custom">
+                                        <option value="1">1 người</option>
+                                        <option value="2">2 người</option>
+                                        <option value="3">3 người</option>
+                                        <option value="4">4 người</option>
+                                        <option value="5">5 người</option>
+                                        <option value="6">6 người</option>
+                                        <option value="7">7 người</option>
+                                        <option value="8">8 người</option>
+                                        <option value="9">9 người</option>
+                                        <option value="10">10 người</option>
+                                        <option value="11">Trên 10 người</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Khối 2: Khách hàng -->
+                        <div class="payment-card-block p-4 mb-4 shadow-sm">
+                            <h2 class="block-title mb-4"><i class="bi bi-person-badge me-2"></i>Thông tin khách hàng</h2>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label-custom">Họ</label>
+                                    <input type="text" id="customer-last-name" class="form-control-custom" placeholder="Nhập họ" value="Đinh">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label-custom">Tên</label>
+                                    <input type="text" id="customer-first-name" class="form-control-custom" placeholder="Nhập tên" value="Thuỳ Như">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label-custom">Địa chỉ email</label>
+                                    <input type="email" id="customer-email" class="form-control-custom bg-light-email" placeholder="Nhập email" value="nhudt123@gmail.com">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Khối 3: Phương thức thanh toán -->
+                        <div class="payment-card-block p-4 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h2 class="block-title mb-0"><i class="bi bi-shield-check me-2"></i>Thanh toán trực tuyến</h2>
+                                <span class="badge-secure"><i class="bi bi-lock-fill me-1"></i>100% Bảo mật</span>
+                            </div>
+
+                            <div class="row g-2 payment-methods-tabs mb-4">
+                                <div class="col-6 col-sm-3">
+                                    <div class="method-tab-item active" data-target="card-panel">Thẻ ViSA</div>
+                                </div>
+                                <div class="col-6 col-sm-3">
+                                    <div class="method-tab-item" data-target="vnpay-panel">Ví VNPAY</div>
+                                </div>
+                                <div class="col-6 col-sm-3">
+                                    <div class="method-tab-item" data-target="momo-panel">Ví MoMo</div>
+                                </div>
+                                <div class="col-6 col-sm-3">
+                                    <div class="method-tab-item" data-target="bank-panel">Ngân hàng</div>
+                                </div>
+                            </div>
+
+                            <div class="method-content-panels mb-4">
+                                <div id="panel-card-panel" class="panel-item">
+                                    <div class="row g-3">
+                                        <div class="col-12"><input type="text" class="form-control-custom" placeholder="Số thẻ"></div>
+                                        <div class="col-6"><input type="text" class="form-control-custom" placeholder="MM / YY"></div>
+                                        <div class="col-6"><input type="text" class="form-control-custom" placeholder="CVV"></div>
+                                    </div>
+                                </div>
+                                <div id="panel-vnpay-panel" class="panel-item d-none p-3 border text-center rounded bg-light text-muted">Hệ thống sẽ tạo cổng quét mã VNPAY sau khi bạn bấm Xác nhận.</div>
+                                <div id="panel-momo-panel" class="panel-item d-none p-3 border text-center rounded bg-light text-muted">Hệ thống sẽ tạo mã QR Ví MoMo sau khi bạn bấm Xác nhận.</div>
+                                <div id="panel-bank-panel" class="panel-item d-none p-3 border text-center rounded bg-light text-muted">Thông tin tài khoản VietQR ngân hàng sẽ xuất hiện sau khi bấm Xác nhận.</div>
+                            </div>
+
+                            <button type="button" id="btn-submit-payment" class="btn btn-submit-booking w-100 py-3">
+                                Xác nhận đặt phòng & Thanh toán
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PHẦN B: BẢNG HÓA ĐƠN & QR CODE CẬP NHẬT TRỰC TIẾP (MẶC ĐỊNH ẨN D-NONE) -->
+                    <div id="inline-invoice-section" class="payment-card-block p-4 shadow-sm border border-success d-none">
+                        
+                        <!-- Trạng thái 1: Đang chờ thanh toán/Quét mã -->
+                        <div id="inline-processing-status" class="text-center py-3">
+                            <h3 class="fw-bold mb-3" style="color: #182B3F;"><i class="bi bi-hourglass-split text-warning me-2"></i>Thông Tin Cổng Giao Dịch</h3>
+                            <p class="text-muted">Phương thức: <strong id="inline-method-title" class="text-dark">Thẻ VISA</strong></p>
+                            
+                            <div class="p-3 my-3 rounded mx-auto" style="background-color: #FFF5F5; border: 1px dashed #FEB2B2; max-width: 400px;">
+                                Số tiền thanh toán: <strong id="inline-total-money" class="text-danger fs-5">7.170.000đ</strong>
+                            </div>
+
+                            <!-- Khung chứa ảnh QR Code -->
+                            <div id="inline-qr-box" class="mb-4 text-center">
+                                <p class="small text-muted mb-3">Vui lòng mở ứng dụng ngân hàng/Ví điện tử để quét mã thanh toán bên dưới:</p>
+                                <img id="inline-qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=HomeetPayment" alt="Mã QR giao dịch" class="img-fluid border p-3 bg-white shadow-sm rounded mx-auto d-block" style="max-width: 220px;">
+                            </div>
+
+                            <div class="mt-4 pt-3 border-top mx-auto" style="max-width: 400px;">
+                                <button type="button" id="btn-inline-verify" class="btn btn-primary w-100 py-2.5 fw-semibold mb-2" style="background-color: #182B3F; border: none;">
+                                    <i class="bi bi-shield-check me-2"></i>Tôi đã hoàn tất chuyển tiền
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Trạng thái 2: Thanh toán thành công -->
+                        <div id="inline-success-status" class="text-center py-4 d-none">
+                            <div class="d-flex justify-content-center mb-3">
+                                <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; font-size: 2.2rem;">
+                                    <i class="bi bi-check-lg"></i>
+                                </div>
+                            </div>
+                            <h3 class="fw-bold text-success mb-2">Thanh toán thành công!</h3>
+                            <p class="text-muted px-4">Hệ thống Homeet đã xác nhận giao dịch thành công. Mã đặt phòng và thông tin hướng dẫn chi tiết đã được gửi đến email của bạn.</p>
+                            <a href="profile.html" class="btn btn-primary mt-3 px-4 me-2" style="background-color: #182B3F; border:none;"><i class="bi bi-person-circle me-2"></i>Xem lịch sử đặt phòng</a>
+                            <a href="../index.html" class="btn btn-outline-secondary mt-3 px-4"><i class="bi bi-house-door me-2"></i>Trở về trang chủ</a>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+                <!-- ================= CỘT PHẢI: TÓM TẮT ĐƠN PHÒNG ================= -->
+                <div class="col-lg-5 col-md-12">
+                    <div class="payment-sidebar-sticky shadow-sm bg-white overflow-hidden rounded-3 border">
+                        <div class="sidebar-room-banner position-relative">
+                            <img id="room-display-img" src="../images/rooms/vungro-main.jpg" alt="Hình ảnh" class="w-100">
+                            <span id="room-display-tag" class="room-tag-overlay">Biển Phú Yên</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 id="room-display-name" class="room-display-name mb-1">Phòng Vũng Rô</h3>
+                            <p class="room-location text-muted small mb-3"><i class="bi bi-geo-alt-fill me-1"></i>Phú Yên, Việt Nam</p>
+                            <div class="d-flex gap-4 border-top border-bottom py-2 my-3 text-muted small">
+                                <span><i class="bi bi-people me-1"></i><span id="summary-guests">2</span> người</span>
+                                <span><i class="bi bi-moon-stars me-1"></i><span id="summary-nights">3</span> đêm</span>
+                            </div>
+                            <div class="pricing-breakdown-list">
+                                <div class="d-flex justify-content-between py-2">
+                                    <span id="calc-price-text" class="text-muted">Giá phòng (2.390.000đ × 3 đêm)</span>
+                                    <span id="calc-subtotal-val" class="fw-semibold">7.170.000đ</span>
+                                </div>
+                                <div class="d-flex justify-content-between py-2 border-top pt-3 mt-3 align-items-center">
+                                    <span class="fw-bold fs-5" style="color: #182B3F;">Tổng cộng</span>
+                                    <span id="calc-total-val" class="fw-bold fs-4" style="color: #182B3F;">7.170.000đ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer" data-include="footer.html"></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bundle.min.js"></script>
+    <script src="../js/load-layout.js"></script>
+    <script src="../js/danh-sach-phong.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const roomParam = urlParams.get('room');
+            const priceParam = urlParams.get('price');
+            
+            // Định nghĩa dữ liệu phòng kèm cấu trúc tối đa (maxCapacity) để kiểm tra sức chứa
+            const roomsDataset = {
+                "nghinh-phong": { name: "Nghinh Phong", price: 990000, img: "../images/rooms/nghinh-phong-main.jpg", tag: "Đón gió biển", maxCapacity: 3, code: "nghinh-phong" },
+                "hoa-vang": { name: "Hoa Vàng", price: 1590000, img: "../images/room-hoa-vang.jpg", tag: "Hồ bơi", maxCapacity: 6, code: "hoa-vang" },
+                "vung-ro": { name: "Vũng Rô", price: 2390000, img: "../images/rooms/vungro-main.jpg", tag: "Biển Phú Yên", maxCapacity: 8, code: "vung-ro" },
+                "mui-dien": { name: "Mũi Điện", price: 3490000, img: "../images/room-mui-dien.jpg", tag: "Biển toàn cảnh", maxCapacity: 10, code: "mui-dien" },
+                
+                "1": { name: "Nghinh Phong", price: 990000, img: "../images/rooms/nghinh-phong-main.jpg", tag: "Đón gió biển", maxCapacity: 3, code: "nghinh-phong" },
+                "2": { name: "Hoa Vàng", price: 1590000, img: "../images/room-hoa-vang.jpg", tag: "Hồ bơi", maxCapacity: 6, code: "hoa-vang" },
+                "3": { name: "Vũng Rô", price: 2390000, img: "../images/rooms/vungro-main.jpg", tag: "Biển Phú Yên", maxCapacity: 8, code: "vung-ro" },
+                "4": { name: "Mũi Điện", price: 3490000, img: "../images/room-mui-dien.jpg", tag: "Biển toàn cảnh", maxCapacity: 10, code: "mui-dien" }
+            };
+
+            let activeRoomId = roomParam || "3";
+            let currentPricePerNight = parseInt(priceParam) || 2390000;
+            let finalCalculatedNumericPrice = 0; // Biến lưu tổng tiền dạng SỐ để bắn API
+
+            // Đồng bộ ngày và số khách từ giỏ hàng hoặc thiết lập mặc định trước đó
+            const prefCheckIn = sessionStorage.getItem('preferred_checkin');
+            const prefCheckOut = sessionStorage.getItem('preferred_checkout');
+            const prefGuests = sessionStorage.getItem('preferred_guests');
+
+            if (prefCheckIn) document.getElementById('checkin-date').value = prefCheckIn;
+            if (prefCheckOut) document.getElementById('checkout-date').value = prefCheckOut;
+            if (prefGuests) document.getElementById('total-guests').value = prefGuests;
+
+            if (roomsDataset[activeRoomId]) {
+                const target = roomsDataset[activeRoomId];
+                document.getElementById('room-display-name').textContent = "Phòng " + target.name;
+                
+                if (urlParams.get('img')) {
+                    document.getElementById('room-display-img').src = "../images/" + decodeURIComponent(urlParams.get('img'));
+                } else {
+                    document.getElementById('room-display-img').src = target.img;
+                }
+                
+                document.getElementById('room-display-tag').textContent = target.tag;
+                if(!priceParam) currentPricePerNight = target.price;
+            }
+
+            // HÀM KIỂM TRA SỨC CHỨA VÀ HIỂN THỊ CẢNH BÁO
+            function checkRoomCapacity(selectedGuests) {
+                const alertContainer = document.getElementById('capacity-alert-container');
+                const targetRoom = roomsDataset[activeRoomId];
+                
+                if (!targetRoom || !alertContainer) return true;
+
+                if (parseInt(selectedGuests) > targetRoom.maxCapacity) {
+                    alertContainer.innerHTML = `
+                        <div class="alert alert-warning alert-dismissible fade show border-warning mb-4 shadow-sm" role="alert">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-exclamation-triangle-fill fs-4 me-3 text-warning"></i>
+                                <div>
+                                    <strong>Cảnh báo sức chứa:</strong> Phòng <strong>${targetRoom.name}</strong> có sức chứa tiêu chuẩn tối đa là <strong>${targetRoom.maxCapacity} khách</strong>. Bạn đang chọn số lượng khách vượt quá sức chứa cho phép của phòng này!
+                                </div>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    `;
+                    return false;
+                } else {
+                    alertContainer.innerHTML = ''; // Xóa cảnh báo nếu hợp lệ
+                    return true;
+                }
+            }
+
+            // Hàm tính toán lại hóa đơn khi đổi ngày/số người
+            function recalculateInvoice() {
+                const checkinStr = document.getElementById('checkin-date').value;
+                const checkoutStr = document.getElementById('checkout-date').value;
+                const guests = document.getElementById('total-guests').value;
+                
+                document.getElementById('summary-guests').textContent = guests;
+
+                // Thực hiện kiểm tra sức chứa ngay khi thay đổi số khách
+                checkRoomCapacity(guests);
+
+                if(checkinStr && checkoutStr) {
+                    const d1 = new Date(checkinStr);
+                    const d2 = new Date(checkoutStr);
+                    const timeDiff = d2.getTime() - d1.getTime();
+                    let nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    if (nights <= 0) nights = 1;
+
+                    document.getElementById('summary-nights').textContent = nights;
+                    finalCalculatedNumericPrice = currentPricePerNight * nights; // Lưu giá dạng số nguyên mẫu
+                    const formattedCost = finalCalculatedNumericPrice.toLocaleString('vi-VN') + "đ";
+
+                    document.getElementById('calc-price-text').textContent = `Giá phòng (${currentPricePerNight.toLocaleString('vi-VN')}đ × ${nights} đêm)`;
+                    document.getElementById('calc-subtotal-val').textContent = formattedCost;
+                    document.getElementById('calc-total-val').textContent = formattedCost;
+                    
+                    document.getElementById('inline-total-money').textContent = formattedCost;
+                }
+            }
+
+            document.getElementById('checkin-date').addEventListener('change', recalculateInvoice);
+            document.getElementById('checkout-date').addEventListener('change', recalculateInvoice);
+            document.getElementById('total-guests').addEventListener('change', recalculateInvoice);
+            recalculateInvoice();
+
+            // Logic điều hướng Tabs phương thức thanh toán công cụ Front-end
+            const tabs = document.querySelectorAll('.method-tab-item');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const target = this.getAttribute('data-target');
+                    document.getElementById('inline-method-title').textContent = this.textContent;
+                    
+                    document.querySelectorAll('.panel-item').forEach(panel => {
+                        panel.classList.add('d-none');
+                    });
+                    document.getElementById(`panel-${target}`).classList.remove('d-none');
+                });
+            });
+
+            // Sự kiện Nhấp nút "Xác nhận đặt phòng & Thanh toán" -> Hiển thị khung QR
+            document.getElementById('btn-submit-payment').addEventListener('click', function() {
+                document.getElementById('form-booking-section').classList.add('d-none');
+                document.getElementById('inline-invoice-section').classList.remove('d-none');
+            });
+
+            // Sự kiện Nhấp nút "Tôi đã hoàn tất chuyển tiền" -> Ghi nhận vào LocalStorage & MockAPI
+            document.getElementById('btn-inline-verify').addEventListener('click', async function() {
+                const checkInVal = document.getElementById('checkin-date').value;
+                const checkOutVal = document.getElementById('checkout-date').value;
+                const guestsVal = document.getElementById('total-guests').value;
+                const totalAmountText = document.getElementById('calc-total-val').textContent;
+                const rName = document.getElementById('room-display-name').textContent.replace('Phòng ', '');
+                const rImg = document.getElementById('room-display-img').src;
+                const nightsText = document.getElementById('summary-nights').textContent;
+                
+                const lastName = document.getElementById('customer-last-name').value.trim();
+                const firstName = document.getElementById('customer-first-name').value.trim();
+                const fullName = (lastName + " " + firstName).trim() || "Đinh Thuỳ Như";
+                const emailVal = document.getElementById('customer-email').value.trim() || "nhudt123@gmail.com";
+                
+                const orderId = "HV-2026-" + Math.floor(100 + Math.random() * 900);
+
+                // Đối tượng lưu cục bộ LocalStorage phục vụ nhu cầu Front-end cũ của bạn
+                const currentOrder = {
+                    id: orderId,
+                    roomKey: activeRoomId,
+                    roomName: rName,
+                    roomImg: rImg,
+                    checkIn: checkInVal.split('-').reverse().join('/'), 
+                    checkOut: checkOutVal.split('-').reverse().join('/'),
+                    guests: guestsVal,
+                    nights: nightsText,
+                    totalAmount: totalAmountText,
+                    pricePerNight: currentPricePerNight.toLocaleString('vi-VN') + "đ",
+                    bookingDate: new Date().toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' }),
+                    customerName: fullName,
+                    customerEmail: emailVal
+                };
+
+                // --- ĐÃ CẬP NHẬT: LUỒNG ĐẨY DATA CHUẨN ĐỒNG BỘ 100% LÊN MOCKAPI ---
+                if (typeof HomeetBackend !== 'undefined' && typeof HomeetBackend.createBooking === 'function') {
+                    try {
+                        const targetRoomInfo = roomsDataset[activeRoomId] || { name: rName, code: activeRoomId };
+                        
+                        const apiBookingData = {
+                            guestName: fullName,                           // Khớp chính xác trường guestName
+                            guestEmail: emailVal,                          // Khớp chính xác trường guestEmail
+                            roomName: "Phòng " + targetRoomInfo.name,      // Khớp chính xác trường roomName
+                            roomCode: targetRoomInfo.code,                 // Khớp chính xác trường roomCode (ví dụ: mui-dien, vung-ro)
+                            checkIn: checkInVal,                           // Định dạng ngày chuẩn YYYY-MM-DD
+                            checkOut: checkOutVal,                         // Định dạng ngày chuẩn YYYY-MM-DD
+                            totalPrice: finalCalculatedNumericPrice,       // Gửi SỐ (Number), KHÔNG gửi chuỗi "4.950.000đ" tránh sinh chuỗi ảo
+                            status: "Đã thanh toán"                        // Trạng thái đơn đặt phòng
+                        };
+
+                        await HomeetBackend.createBooking(apiBookingData);
+                        console.log("🚀 [MockAPI] Đã đồng bộ dữ liệu hóa đơn sạch lên server thành công!");
+                    } catch (apiError) {
+                        console.error("❌ Lỗi khi đồng bộ dữ liệu lên MockAPI:", apiError);
+                    }
+                }
+                // -----------------------------------------------------------------
+
+                // Lưu lịch sử đặt phòng cục bộ
+                let bookingHistory = JSON.parse(localStorage.getItem('bookingHistory')) || [];
+                bookingHistory.unshift(currentOrder);
+                localStorage.setItem('bookingHistory', JSON.stringify(bookingHistory));
+
+                // Dọn sạch phòng này ra khỏi giỏ hàng sau khi đặt mua thành công
+                let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+                cart = cart.filter(item => item.roomKey !== activeRoomId);
+                localStorage.setItem('myCart', JSON.stringify(cart));
+                
+                // Kích hoạt cập nhật số giỏ hàng trên Header về 0 hoặc giảm bớt
+                window.dispatchEvent(new Event('cartUpdated'));
+
+                // Chuyển màn hình giao diện sang trạng thái hoàn tất thành công
+                document.getElementById('inline-processing-status').classList.add('d-none');
+                document.getElementById('inline-success-status').classList.remove('d-none');
+            });
+        });
+    </script>
+</body>
+</html>

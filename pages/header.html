@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid px-lg-4">
+        <a class="navbar-brand" href="../index.html">
+            <img src="../images/logo.png" alt="Homeet" class="site-logo">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Mở menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav mx-lg-auto gap-lg-3">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/index.html">Trang Chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/guidebook.html">Cẩm nang du lịch</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/faq.html">Liên hệ &amp; Hỗ trợ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/about-us.html">Về chúng tôi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/policy.html">Các chính sách</a>
+                </li>
+            </ul>
+
+            <!-- ======================================================================= -->
+            <!-- CỤM TÁC VỤ BÊN PHẢI (Hỗ trợ luồng Đăng nhập giả lập Front-end & Back-end) -->
+            <!-- ======================================================================= -->
+            <div class="d-flex align-items-center gap-3 ms-lg-3">
+
+                <!-- 1. KHỐI CHƯA ĐĂNG NHẬP (Mặc định hiển thị khi chưa kích hoạt login) -->
+                <a href="/pages/log-in.html" id="auth-logged-out" class="btn btn-login">
+                    <i class="bi bi-person-fill"></i>
+                    <span>Đăng nhập / Đăng ký</span>
+                </a>
+
+                <!-- 2. KHỐI ĐÃ ĐĂNG NHẬP (Mặc định ẩn hoàn toàn bằng d-none, sẽ kích hoạt bằng JS/Back-end) -->
+                <div id="auth-logged-in" class="d-none align-items-center gap-3">
+                    <!-- Nút Giỏ Hàng (Đã sửa giá trị mặc định thành 0 và thêm class d-none) -->
+                    <a href="/pages/cart.html" class="btn position-relative p-2" style="color: #182B3F;" title="Giỏ hàng">
+                        <i class="bi bi-bag fs-4"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" style="font-size: 0.65rem; padding: 0.25em 0.4em;">0</span>
+                    </a>
+
+                    <!-- Dropdown Hồ sơ của tôi (Sử dụng cấu trúc chuẩn Bootstrap và font Noto Serif) -->
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle px-3 py-2 rounded-pill fw-bold d-flex align-items-center gap-2" 
+                                type="button" id="userMenuDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="background-color: #182B3F; border: none; color: #fff; font-family: 'Noto Serif', serif; font-size: 0.9rem;">
+                            <i class="bi bi-person-circle fs-5"></i>
+                            <span>Hồ sơ của tôi</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2" aria-labelledby="userMenuDropdown" style="font-family: 'Noto Serif', serif; min-width: 180px;">
+                            <li><a class="dropdown-item py-2" href="/pages/profile.html" style="color: #182B3F;"><i class="bi bi-person me-2"></i>Xem hồ sơ</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item py-2 text-danger" id="auth-logout-trigger" href="/index.html"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ======================================================================= -->
+
+        </div>
+    </div>
+</nav>

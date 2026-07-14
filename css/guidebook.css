@@ -1,0 +1,212 @@
+/* =============================================
+   Homeet - Guidebook / Travel Magazine Page
+   ============================================= */
+
+:root {
+    /* Màu sắc chuẩn thương hiệu */
+    --color-navy: #182B3F; 
+    --color-navy-hover: #243e5a;
+    --color-primary-brand: #2b4e64; 
+    
+    /* Đã chuyển đổi toàn bộ hệ thống sang font Noto Serif */
+    --font-serif: 'Noto Serif', serif;
+    --font-sans: 'Noto Serif', serif; 
+    --radius-card: 12px;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: #FEF8F4; /* Trùng màu nền với Header hệ thống */
+    color: var(--color-navy);
+}
+
+/* ---- Header cấu trúc trang ---- */
+.guidebook-header {
+    text-align: left;
+}
+
+.guidebook-title {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--color-navy);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.guidebook-subtitle {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* ---- Bộ lọc Pills phong cách hiện đại ---- */
+.search-wrapper input {
+    font-family: var(--font-sans);
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+}
+
+.search-wrapper input:focus {
+    box-shadow: 0 0 0 3px rgba(24, 43, 63, 0.15);
+    border-color: var(--color-navy);
+}
+
+.btn-pill {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    background-color: #e2f0f9;
+    color: #4a5568;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-pill:hover {
+    background-color: #d2e6f4;
+    color: var(--color-navy);
+}
+
+.btn-pill.active {
+    background-color: var(--color-navy);
+    color: #ffffff;
+}
+
+/* ---- Thẻ bài viết (Article Cards) ---- */
+.article-card {
+    border-radius: var(--radius-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #ffffff;
+}
+
+.article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(24, 43, 63, 0.08) !important;
+}
+
+.article-title {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1.3;
+}
+
+.article-title a, 
+.article-title-sm a {
+    color: var(--color-navy);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.article-title a:hover, 
+.article-title-sm a:hover {
+    color: var(--color-primary-brand);
+}
+
+.article-title-sm {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.article-excerpt {
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.article-meta {
+    font-size: 0.85rem;
+}
+
+.badge {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+}
+
+/* ---- Cột Sidebar Widgets ---- */
+.widget-title {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--color-navy);
+    position: relative;
+}
+
+/* Widget 1: Banner Đặt phòng */
+.widget-cta {
+    background: linear-gradient(135deg, #0d1a27 0%, var(--color-navy) 100%);
+    border-radius: var(--radius-card);
+    min-height: 240px;
+}
+
+.btn-white {
+    font-family: var(--font-sans);
+    background-color: #ffffff;
+    color: var(--color-navy);
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-white:hover {
+    background-color: #f1f5f9;
+    color: var(--color-navy-hover);
+}
+
+/* Widget 2: Bài viết thịnh hành / Nổi bật */
+.widget-trending {
+    border-radius: var(--radius-card);
+    background-color: #ffffff;
+}
+
+.trending-rank {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: rgba(24, 43, 63, 0.25);
+    line-height: 1;
+}
+
+.trending-post-title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+/* Widget 3: Newsletter Đăng ký */
+.widget-newsletter {
+    border-radius: var(--radius-card);
+    background-color: #f4eae1; 
+}
+
+.widget-newsletter .btn-submit {
+    font-family: var(--font-sans);
+    background-color: var(--color-primary-brand);
+    color: #ffffff;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.widget-newsletter .btn-submit:hover {
+    background-color: var(--color-navy);
+}
+
+/* ---- Cấu trúc Responsive linh hoạt ---- */
+@media (max-width: 991.98px) {
+    .card-featured .row.g-0 {
+        flex-direction: column;
+    }
+    .card-featured img {
+        height: 260px !important;
+    }
+}

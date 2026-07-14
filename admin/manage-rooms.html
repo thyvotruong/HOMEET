@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Trạng Thái Phòng - Homeet Admin</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <div id="sidebar-container"></div>
+        <main class="admin-content">
+            <h2 class="fw-bold text-dark mb-4">Danh sách 4 phòng cố định</h2>
+
+            <div class="card shadow-sm border-0 p-4">
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>STT</th><th>Tên hạng phòng</th><th>Sức chứa</th><th>Giá phòng hiện tại</th><th>Trạng thái hoạt động</th><th class="text-center">Thao tác chỉnh sửa</th>
+                            </tr>
+                        </thead>
+                        <tbody id="room-table-body">
+                            <!-- Code dữ liệu 4 phòng hoạt động bình thường đổ ra từ rooms.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/backend-service.js"></script>
+    <script src="js/admin-shared.js"></script>
+    <script src="js/rooms.js"></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết đơn đặt phòng - Homeet</title>
+
+    <!-- Google Fonts: Duy nhất Noto Serif cho toàn bộ hệ thống -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/booking.css">
+</head>
+<body>
+
+    <!-- Header ở trạng thái bắt buộc đã đăng nhập -->
+    <header class="site-header sticky-top" data-include="header.html" data-auth="logged-in"></header>
+
+    <main class="booking-detail-wrapper py-5">
+        <div class="container">
+            
+            <!-- THANH TIÊU ĐỀ TRÊN CÙNG -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
+                <div class="d-flex align-items-center flex-wrap gap-2">
+                    <h1 class="booking-main-title mb-0" id="detail-booking-id">Đơn đặt phòng #HV-2026-102</h1>
+                    <span class="badge badge-status-confirmed">ĐÃ XÁC NHẬN</span>
+                </div>
+                <div class="d-flex gap-2 build-actions">
+                    <button class="btn btn-action-dark px-3"><i class="bi bi-printer me-1"></i> In hóa đơn</button>
+                </div>
+            </div>
+
+            <!-- NỘI DUNG CHÍNH CHIA THÀNH 2 CỘT -->
+            <div class="row g-4">
+                
+                <!-- ================= CỘT TRÁI (CHI TIẾT ĐƠN HÀNG) ================= -->
+                <div class="col-lg-8">
+                    
+                    <!-- Khối 1: Thông tin khách hàng -->
+                    <div class="booking-card-block p-4 mb-4 shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="block-title mb-0">Thông tin khách hàng</h2>
+                            <a href="#" class="edit-info-link text-decoration-none">Chỉnh sửa thông tin</a>
+                        </div>
+                        <div class="row g-3 align-items-start">
+                            <div class="col-md-6 d-flex gap-3">
+                                <img src="../images/avatar-thuy-nhu.jpg" alt="Đinh Thuỳ Như" class="customer-avatar rounded-circle">
+                                <div>
+                                    <span class="meta-label-small d-block text-uppercase">Họ và tên</span>
+                                    <h4 class="customer-name mb-1" id="detail-customer-name">Đinh Thuỳ Như</h4>
+                                    <p class="customer-contact-text text-muted mb-0" id="detail-customer-email">nhudt123@gmail.com</p>
+                                    <p class="customer-contact-text text-muted mb-0">+84 90 123 4567</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ps-md-4 border-start-md">
+                                <span class="meta-label-small d-block text-uppercase mb-1">Hồ sơ khách hàng</span>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge badge-profile-tag">Khách hàng thân thiết</span>
+                                    <span class="badge badge-profile-tag">Đã xác minh danh tính</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khối 2: Thông tin phòng lưu trú (100% Tiếng Việt) -->
+                    <div class="booking-card-block shadow-sm overflow-hidden mb-4">
+                        <div class="row g-0">
+                            <div class="col-md-5 position-relative">
+                                <img id="detail-room-img" src="../images/room-vung-ro.jpg" alt="Phòng Vũng Rô" class="room-preview-img w-100 h-100" style="object-fit: cover;">
+                                <span id="detail-room-badge" class="room-badge-overlay">Phòng Vũng Rô</span>
+                            </div>
+                            <div class="col-md-7 p-4 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <h3 class="room-detail-name mb-1" id="detail-room-name">Phòng Vũng Rô</h3>
+                                            <p class="room-location-text text-muted mb-0"><i class="bi bi-geo-alt-fill me-1"></i>Homeet Phú Yên</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="my-3 text-muted opacity-25">
+
+                                    <div class="row text-start mb-3">
+                                        <div class="col-6">
+                                            <span class="meta-label-small d-block text-uppercase">Nhận phòng</span>
+                                            <strong class="date-highlight" id="detail-checkin">24/07/2026</strong>
+                                            <span class="time-sub text-muted d-block">Từ 14:00</span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span class="meta-label-small d-block text-uppercase">Trả phòng</span>
+                                            <strong class="date-highlight" id="detail-checkout">27/07/2026</strong>
+                                            <span class="time-sub text-muted d-block">Trước 12:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="room-utilities-footer pt-2 border-top d-flex gap-3 text-muted small" id="detail-utilities">
+                                    <span><i class="bi bi-people-fill me-1"></i>6 Người lớn</span>
+                                    <span><i class="bi bi-moon-stars-fill me-1"></i>3 Đêm</span>
+                                    <span><i class="bi bi-check-circle-fill me-1"></i>Đã bao gồm Thuế & Phí dịch vụ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khối 3: Tóm tắt thanh toán (100% Tiếng Việt) -->
+                    <div class="booking-card-block p-4 mb-4 shadow-sm">
+                        <h2 class="block-title mb-3">Tóm tắt thanh toán</h2>
+                        
+                        <div class="payment-details-list">
+                            <!-- Giá phòng -->
+                            <div class="d-flex justify-content-between py-2 border-bottom border-light-subtle">
+                                <span class="text-muted" id="detail-price-night-text">Giá phòng (2.390.000đ × 3 đêm) - Đã bao gồm Thuế & Phí dịch vụ</span>
+                                <span class="fw-semibold" id="detail-subtotal-price">7.170.000đ</span>
+                            </div>
+                    
+                            <!-- Tổng tiền -->
+                            <div class="d-flex justify-content-between align-items-center pt-3 pb-3">
+                                <span class="fw-bold fs-5" style="color: #182B3F;">Tổng số tiền đã thanh toán</span>
+                                <div class="text-end">
+                                    <span class="fw-bold fs-5 d-block" id="detail-total-price" style="color: #182B3F;">7.170.000đ</span>
+                                    <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2 py-0.5 small" style="font-size: 0.75rem;">
+                                        <i class="bi bi-check-circle-fill me-1"></i>Đã thanh toán 100%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hộp thông tin phương thức thanh toán thẻ -->
+                        <div class="method-payment-box p-3 d-flex justify-content-between align-items-center mt-2">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="fs-3 text-secondary d-flex align-items-center">
+                                    <i class="bi bi-credit-card-2-back-fill" style="color: #182B3F;"></i>
+                                </div>
+                                <div>
+                                    <strong class="d-block small-title-card" style="color: #182B3F; font-size: 0.95rem;">Đã thanh toán trực tuyến qua Hệ thống Homeet</strong>
+                                    <span class="text-muted" id="detail-booking-date" style="font-size: 0.78rem;">Thời gian thanh toán: 10 Tháng 5, 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ================= CỘT PHẢI (THAO TÁC) ================= -->
+                <div class="col-lg-4">
+                    
+                    <!-- Khối Thao tác nhanh (Rút gọn) -->
+                    <div class="quick-actions-sidebar p-4 mb-4 shadow-sm text-white">
+                        <h3 class="sidebar-block-title text-white mb-3">Thao tác nhanh</h3>
+                        <div class="d-flex flex-column gap-3">
+                            <button class="btn btn-sidebar-action-light">
+                                <i class="bi bi-envelope-at me-2"></i>Gửi lại tôi Email xác nhận
+                            </button>
+                            <button class="btn btn-sidebar-action-danger" id="btn-cancel-booking">
+                                <i class="bi bi-x-circle me-2"></i>Hủy đơn đặt phòng
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Tải Động -->
+    <footer class="site-footer" data-include="footer.html"></footer>
+
+    <!-- Scripts -->
+    <script src="../js/load-layout.js"></script>
+    <!-- FIX: Sửa đường dẫn Bootstrap từ js/bundle.min.js sang bootstrap.bundle.min.js để chạy được menu thả xuống -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script Bổ sung: Đọc vị trí index đơn phòng từ URL và lấp đầy dữ liệu + Xử lý hủy phòng -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const index = urlParams.get('index');
+            const btnCancel = document.getElementById('btn-cancel-booking');
+            const statusBadge = document.querySelector('.badge-status-confirmed');
+            
+            // Nếu không có index hoặc index bằng 'default' thì giữ nguyên dữ liệu mặc định ban đầu
+            if (index === null || index === 'default') {
+                if(btnCancel) btnCancel.style.display = 'none'; // Đơn mặc định không thực hiện hủy
+                return;
+            }
+
+            // Đọc cơ sở mảng dữ liệu đặt phòng từ máy khách
+            const bookingHistory = JSON.parse(localStorage.getItem('bookingHistory')) || [];
+            const data = bookingHistory[Number(index)];
+
+            if (data) {
+                // Kiểm tra trạng thái đơn đặt phòng trước đó
+                if (data.status === 'cancelled') {
+                    if (statusBadge) {
+                        statusBadge.className = 'badge bg-danger text-white';
+                        statusBadge.textContent = 'ĐÃ HỦY';
+                    }
+                    if (btnCancel) {
+                        btnCancel.disabled = true;
+                        btnCancel.className = 'btn btn-secondary w-100 text-white opacity-75';
+                        btnCancel.innerHTML = '<i class="bi bi-x-circle-fill me-2"></i>Đơn hàng đã bị hủy';
+                    }
+                }
+
+                // 1. Đồng bộ mã đặt phòng trên tiêu đề
+                document.getElementById('detail-booking-id').innerHTML = `Đơn đặt phòng #${data.id}`;
+                document.title = `Chi tiết đơn đặt phòng #${data.id} - Homeet`;
+
+                // 2. Đồng bộ thông tin khách hàng
+                document.getElementById('detail-customer-name').textContent = data.customerName || "Đinh Thuỳ Như";
+                document.getElementById('detail-customer-email').textContent = data.customerEmail || "nhudt123@gmail.com";
+
+                // 3. Khối Banner hình ảnh và tên phòng nghỉ nghỉ dưỡng
+                document.getElementById('detail-room-img').src = data.roomImg;
+                document.getElementById('detail-room-badge').textContent = "Phòng " + data.roomName;
+                document.getElementById('detail-room-name').textContent = "Phòng " + data.roomName;
+
+                // 4. Đồng bộ Lịch trình Ngày nhận và Trả phòng
+                document.getElementById('detail-checkin').textContent = data.checkIn;
+                document.getElementById('detail-checkout').textContent = data.checkOut;
+
+                // 5. Khối đếm số lượng người lớn và số đêm ở chân card phòng
+                const targetNights = data.nights || 3;
+                document.getElementById('detail-utilities').innerHTML = `
+                    <span><i class="bi bi-people-fill me-1"></i>${data.guests} Người lớn</span>
+                    <span><i class="bi bi-moon-stars-fill me-1"></i>${targetNights} Đêm</span>
+                    <span><i class="bi bi-check-circle-fill me-1"></i>Đã bao gồm Thuế & Phí dịch vụ</span>
+                `;
+
+                // 6. Tính toán nhãn dòng bảng giá tiền chi tiết
+                const pricePerNightStr = data.pricePerNight || "2.390.000đ";
+                document.getElementById('detail-price-night-text').textContent = `Giá phòng (${pricePerNightStr} × ${targetNights} đêm) - Đã bao gồm Thuế & Phí dịch vụ`;
+                document.getElementById('detail-subtotal-price').textContent = data.totalAmount;
+                document.getElementById('detail-total-price').textContent = data.totalAmount;
+
+                // 7. Cập nhật ngày giờ khách hàng tiến hành bấm thanh toán giao dịch thành công
+                document.getElementById('detail-booking-date').textContent = `Thời gian thanh toán: ${data.bookingDate}`;
+
+                // ---- XỬ LÝ SỰ KIỆN NHẤN NÚT HỦY PHÒNG ----
+                if (btnCancel && data.status !== 'cancelled') {
+                    btnCancel.addEventListener('click', function() {
+                        // Phân tách chuỗi ngày nhận phòng "DD/MM/YYYY" sang định dạng "YYYY-MM-DD"
+                        const parts = data.checkIn.split('/');
+                        const checkInDate = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+                        const today = new Date(); // Lấy ngày hiện tại
+
+                        // Tính khoảng cách số ngày thực tế
+                        const timeDiff = checkInDate.getTime() - today.getTime();
+                        const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                        let confirmProceed = false;
+
+                        if (daysDiff < 5) {
+                            // Dưới 5 ngày: Cảnh báo không hoàn tiền
+                            confirmProceed = confirm(`⚠️ Thông báo: Thời gian tới ngày nhận phòng còn ít hơn 5 ngày (${daysDiff} ngày).\n\nĐơn đặt phòng này của bạn sẽ KHÔNG ĐƯỢC HOÀN TIỀN.\n\nBạn có chắc chắn vẫn muốn tiếp tục hủy?`);
+                        } else {
+                            // Trên hoặc bằng 5 ngày: Cho phép hủy có hoàn tiền công khai
+                            confirmProceed = confirm(`Xác nhận hủy: Còn ${daysDiff} ngày trước khi nhận phòng.\n\nBạn có chắc chắn muốn hủy đơn đặt phòng này không?`);
+                        }
+
+                        if (confirmProceed) {
+                            // Cập nhật trạng thái vào localStorage
+                            bookingHistory[Number(index)].status = 'cancelled';
+                            localStorage.setItem('bookingHistory', JSON.stringify(bookingHistory));
+
+                            alert('Hủy đơn đặt phòng thành công!');
+                            window.location.reload(); // Tải lại trang để cập nhật giao diện trực quan tại chỗ
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

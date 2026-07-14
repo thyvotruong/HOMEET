@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Các chính sách của Homeet</title>
+    <!-- Hệ thống CSS chuẩn của dự án -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/global-layout.css"> <!-- Import CSS footer chung -->
+    
+    <!-- Google Fonts: Noto Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- CSS riêng cho trang Policy -->
+    <link rel="stylesheet" href="../css/policy.css">
+</head>
+<body>
+    <!-- 1. Tự động gọi navbar -->
+    <header class="site-header sticky-top" data-include="header.html"></header>
+
+    <!-- Thừa kế đúng class my-content-page -->
+    <main class="my-content-page py-5">
+        <div class="container">
+            
+            <!-- ---- CỤM TIÊU ĐỀ TRÊN CÙNG (Đúng mẫu giao diện) ---- -->
+            <div class="policy-hero-section text-start mb-5 pb-4 border-bottom-line">
+                <h1 class="policy-main-title mb-3">Các chính sách của HOMEET</h1>
+                <p class="policy-main-subtitle text-muted">
+                    Chào mừng bạn đến với Homeet. Chúng tôi tin rằng cảm giác thuộc về bất cứ nơi đâu luôn bắt đầu từ sự tin tưởng và minh bạch. Dưới đây là các giá trị và chính sách nền tảng giúp chúng tôi xây dựng cộng đồng lưu trú bền vững.
+                </p>
+            </div>
+
+            <!-- ---- BỐ CỤC MỤC LỤC + NỘI DUNG ---- -->
+            <div class="row g-4 position-relative">
+                
+                <!-- CỘT TRÁI: MỤC LỤC ĐIỀU HƯỚNG (Sticky bên máy tính) -->
+                <div class="col-lg-3 col-md-4">
+                    <nav class="policy-sidebar-sticky">
+                        <h2 class="sidebar-menu-title text-uppercase mb-3">Mục lục</h2>
+                        <ul class="nav flex-column policy-nav-links">
+                            <li class="nav-item"><a class="nav-link active" href="#dat-phong">Chính sách đặt phòng</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#thanh-toan">Chính sách thanh toán</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#huy-dat-phong">Chính sách hủy đặt phòng</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#hoan-tien">Chính sách hoàn tiền</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#bao-mat">Chính sách bảo mật</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- CỘT PHẢI: CHI TIẾT CÁC CHÍNH SÁCH (Các khối hộp trắng) -->
+                <div class="col-lg-9 col-md-8">
+                    <div class="policy-content-wrapper d-flex flex-column gap-4">
+                        
+                        <!-- 1. Chính sách đặt phòng -->
+                        <div id="dat-phong" class="policy-block-card p-4 p-md-5 shadow-sm bg-white border-0">
+                            <h2 class="policy-card-title mb-4 d-flex align-items-center gap-3">
+                                <i class="bi bi-calendar-check"></i> Chính sách đặt phòng
+                            </h2>
+                            <div class="policy-text-body">
+                                <p>Khách hàng có thể thực hiện đặt phòng trực tuyến trên website Homeet bằng cách lựa chọn loại phòng, thời gian lưu trú, nhập đầy đủ thông tin người đặt và xác nhận đơn đặt phòng.</p>
+                                <p>Đơn đặt phòng được xem là hợp lệ khi đáp ứng đầy đủ các điều kiện sau:</p>
+                                <ul>
+                                    <li>Phòng vẫn còn trống trong khoảng thời gian khách hàng lựa chọn.</li>
+                                    <li>Khách hàng cung cấp đầy đủ và chính xác các thông tin theo yêu cầu.</li>
+                                    <li>Khách hàng hoàn tất thanh toán theo quy định của Homeet.</li>
+                                </ul>
+                                <p>Sau khi đơn đặt phòng được xác nhận thành công, hệ thống sẽ gửi thông tin xác nhận đến địa chỉ thư điện tử hoặc số điện thoại mà khách hàng đã đăng ký. Khách hàng có trách nhiệm kiểm tra lại các thông tin trong đơn đặt phòng và thông báo ngay cho Homeet nếu phát hiện sai sót.</p>
+                            </div>
+                        </div>
+
+                        <!-- 2. Chính sách thanh toán -->
+                        <div id="thanh-toan" class="policy-block-card p-4 p-md-5 shadow-sm bg-white border-0">
+                            <h2 class="policy-card-title mb-4 d-flex align-items-center gap-3">
+                                <i class="bi bi-credit-card"></i> Chính sách thanh toán
+                            </h2>
+                            <div class="policy-text-body">
+                                <p>Homeet áp dụng hình thức thanh toán trực tuyến 100% giá trị đơn đặt phòng trước khi xác nhận đặt phòng. Hệ thống không hỗ trợ thanh toán tại homestay hoặc thanh toán sau khi nhận phòng.</p>
+                                <p>Khách hàng có thể thanh toán thông qua các phương thức được hỗ trợ trên website như thẻ ngân hàng, ví điện tử hoặc cổng thanh toán trực tuyến. Đơn đặt phòng chỉ được xác nhận khi giao dịch thanh toán thành công.</p>
+                                <p>Trường hợp giao dịch không thành công, hệ thống sẽ không giữ chỗ và khách hàng cần thực hiện lại việc đặt phòng nếu vẫn còn nhu cầu và phòng vẫn còn khả dụng.</p>
+                            </div>
+                        </div>
+
+                        <!-- 3. Chính sách hủy đặt phòng -->
+                        <div id="huy-dat-phong" class="policy-block-card p-4 p-md-5 shadow-sm bg-white border-0">
+                            <h2 class="policy-card-title mb-4 d-flex align-items-center gap-3">
+                                <i class="bi bi-calendar-x"></i> Chính sách hủy đặt phòng
+                            </h2>
+                            <div class="policy-text-body">
+                                <p>Khách hàng có thể chủ động hủy đơn đặt phòng trên website hoặc liên hệ Homeet để được hỗ trợ.</p>
+                                <p>Quy định hủy phòng như sau:</p>
+                                <ul>
+                                    <li>Hủy đơn đặt phòng từ 05 ngày trở lên trước ngày nhận phòng: được hoàn 100% số tiền đã thanh toán.</li>
+                                    <li>Hủy dưới 05 ngày trước ngày nhận phòng hoặc không đến nhận phòng theo lịch đã đặt: không được hoàn tiền.</li>
+                                </ul>
+                                <p>Trường hợp Homeet hoặc homestay không thể cung cấp phòng theo đơn đặt phòng đã xác nhận do sự cố kỹ thuật, thiên tai hoặc các nguyên nhân bất khả kháng từ phía đơn vị cung cấp dịch vụ, khách hàng sẽ được hỗ trợ đổi lịch lưu trú hoặc hoàn lại 100% số tiền đã thanh toán.</p>
+                            </div>
+                        </div>
+
+                        <!-- 4. Chính sách hoàn tiền -->
+                        <div id="hoan-tien" class="policy-block-card p-4 p-md-5 shadow-sm bg-white border-0">
+                            <h2 class="policy-card-title mb-4 d-flex align-items-center gap-3">
+                                <i class="bi bi-cash-stack"></i> Chính sách hoàn tiền
+                            </h2>
+                            <div class="policy-text-body">
+                                <p>Homeet chỉ thực hiện hoàn tiền đối với các đơn đặt phòng đáp ứng điều kiện của Chính sách hủy đặt phòng hoặc trong trường hợp việc hủy phòng phát sinh từ phía Homeet.</p>
+                                <p>Việc hoàn tiền được thực hiện theo các quy định sau:</p>
+                                <ul>
+                                    <li>Đơn đặt phòng được hủy ít nhất 05 ngày trước ngày nhận phòng sẽ được hoàn 100% số tiền đã thanh toán.</li>
+                                    <li>Các trường hợp hủy dưới 05 ngày trước ngày nhận phòng hoặc không đến nhận phòng sẽ không được hoàn tiền.</li>
+                                    <li>Khoản tiền hoàn sẽ được chuyển về đúng phương thức thanh toán ban đầu trong thời gian từ 03 đến 07 ngày làm việc, tùy theo quy định của ngân hàng hoặc đơn vị cung cấp dịch vụ thanh toán.</li>
+                                </ul>
+                                <p>Trạng thái xử lý hoàn tiền sẽ được cập nhật trên hệ thống để khách hàng thuận tiện theo dõi.</p>
+                            </div>
+                        </div>
+
+                        <!-- 5. Chính sách bảo mật -->
+                        <div id="bao-mat" class="policy-block-card p-4 p-md-5 shadow-sm bg-white border-0">
+                            <h2 class="policy-card-title mb-4 d-flex align-items-center gap-3">
+                                <i class="bi bi-shield-lock"></i> Chính sách bảo mật
+                            </h2>
+                            <div class="policy-text-body">
+                                <p>Homeet cam kết bảo vệ thông tin cá nhân và dữ liệu giao dịch của khách hàng trong quá trình sử dụng website.</p>
+                                <p>Thông tin do khách hàng cung cấp chỉ được sử dụng cho các mục đích sau:</p>
+                                <ul>
+                                    <li>Xác nhận và quản lý đơn đặt phòng.</li>
+                                    <li>Thực hiện thanh toán và hoàn tiền.</li>
+                                    <li>Liên hệ hỗ trợ khách hàng khi cần thiết.</li>
+                                    <li>Gửi thông báo liên quan đến đơn đặt phòng hoặc những thay đổi ảnh hưởng đến quá trình lưu trú.</li>
+                                </ul>
+                                <p>Homeet không chia sẻ hoặc cung cấp thông tin cá nhân của khách hàng cho bên thứ ba, ngoại trừ các đơn vị cung cấp dịch vụ thanh toán, cơ quan nhà nước có thẩm quyền theo quy định của pháp luật hoặc khi có sự đồng ý của khách hàng. Mọi dữ liệu cá nhân đều được lưu trữ và bảo vệ bằng các biện pháp bảo mật phù hợp nhằm hạn chế nguy cơ truy cập trái phép hoặc rò rỉ thông tin.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- 2. Tự động gọi footer -->
+    <footer class="site-footer" data-include="footer.html"></footer>
+
+    <!-- 3. Chạy script hệ thống -->
+    <script src="../js/load-layout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script đồng bộ cuộn Menu ScrollSpy thông minh -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll(".policy-block-card");
+            const navLinks = document.querySelectorAll(".policy-nav-links .nav-link");
+
+            window.addEventListener("scroll", () => {
+                let current = "";
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Trừ bớt 120px bù cho phần Header thanh navbar dính cố định phía trên
+                    if (pageYOffset >= sectionTop - 130) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href").includes(current)) {
+                        link.classList.add("active");
+                    }
+                });
+            });
+            
+            // Xử lý cuộn mượt khi click vào mục lục
+            navLinks.forEach(link => {
+                link.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute("href");
+                    const targetSection = document.querySelector(targetId);
+                    if(targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 110,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
